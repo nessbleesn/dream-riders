@@ -1386,3 +1386,432 @@ figcaption {
     text-align: center;
   }
 }
+
+/* Extreme zone refocus: daylight kinetic system, attractions, animated footer */
+:root {
+  --day-top: #e9f8ff;
+  --day-mid: #fff8dc;
+  --day-ground: #dff3c3;
+  --asphalt: #21283a;
+  --cta-hot: #ff512f;
+  --cta-warm: #ffd53d;
+  --track-teal: #18bfa8;
+  --deep-blue: #2148d8;
+  --motion: cubic-bezier(0.16, 1, 0.3, 1);
+  --body-gradient: linear-gradient(180deg, var(--day-top) 0%, #f8fcff 34%, var(--day-mid) 66%, var(--day-ground) 100%);
+}
+
+:root[data-theme="dark"] {
+  --day-top: #111a2c;
+  --day-mid: #181126;
+  --day-ground: #111f25;
+  --asphalt: #f7fbff;
+  --body-gradient: linear-gradient(180deg, #09111f 0%, #121932 42%, #1a1329 74%, #0c1c20 100%);
+}
+
+body {
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--paper), transparent 14%) 0%, transparent 42%),
+    var(--body-gradient);
+  transition: background 260ms var(--motion), color 260ms var(--motion);
+}
+
+body::before {
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--track-teal), transparent 84%) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--deep-blue), transparent 88%) 1px, transparent 1px);
+  background-size: 64px 64px;
+  opacity: 0.2;
+  mask-image: linear-gradient(to bottom, black 0%, transparent 72%);
+}
+
+.page-backdrop {
+  background:
+    linear-gradient(180deg, var(--day-top) 0%, color-mix(in srgb, var(--paper), transparent 35%) 45%, var(--day-ground) 100%);
+}
+
+.page-backdrop::before {
+  inset: -20% -12%;
+  background:
+    repeating-linear-gradient(104deg, transparent 0 74px, color-mix(in srgb, var(--track-teal), transparent 82%) 75px 78px, transparent 79px 152px),
+    repeating-linear-gradient(18deg, transparent 0 120px, color-mix(in srgb, var(--cta-warm), transparent 76%) 121px 123px, transparent 124px 220px),
+    linear-gradient(128deg, color-mix(in srgb, var(--sky), transparent 88%), transparent 38%, color-mix(in srgb, var(--mint), transparent 84%) 72%, transparent);
+  opacity: 0.54;
+  transform: rotate(-1deg);
+  animation: trackBlueprint 24s var(--motion) infinite alternate;
+}
+
+.page-backdrop::after {
+  left: -12vw;
+  right: -12vw;
+  bottom: -6vh;
+  height: 46vh;
+  background:
+    linear-gradient(116deg, transparent 0 22%, color-mix(in srgb, var(--track-teal), transparent 52%) 23% 24.5%, transparent 25.5% 47%, color-mix(in srgb, var(--deep-blue), transparent 64%) 48% 49.5%, transparent 50.5%),
+    linear-gradient(164deg, transparent 0 56%, color-mix(in srgb, var(--cta-hot), transparent 70%) 57% 58.5%, transparent 59.5%),
+    linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--day-ground), transparent 20%) 72%);
+  opacity: 0.72;
+  filter: none;
+}
+
+.backdrop-glow {
+  display: none;
+}
+
+.backdrop-track {
+  right: -18rem;
+  top: 14vh;
+  width: min(68vw, 880px);
+  border-width: clamp(10px, 1.2vw, 18px);
+  border-color: color-mix(in srgb, var(--track-teal), transparent 44%);
+  border-left-color: color-mix(in srgb, var(--cta-warm), transparent 38%);
+  border-bottom-color: color-mix(in srgb, var(--cta-hot), transparent 28%);
+  opacity: 0.18;
+  filter: blur(0.1px);
+}
+
+.backdrop-speed {
+  opacity: 0.22;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--track-teal), transparent 20%), transparent);
+  animation: speedPulse 3.4s var(--motion) infinite;
+}
+
+.site-header,
+.hero-content,
+.hero-stats article,
+.map-card,
+.steps article,
+.location-card,
+.faq details,
+.ticket-band {
+  transition: transform 220ms var(--motion), border-color 220ms var(--motion), background 220ms var(--motion), box-shadow 220ms var(--motion);
+}
+
+.hero {
+  background: #07101b;
+  min-height: calc(100svh - 74px);
+}
+
+.hero-media::before {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  content: "";
+  background:
+    linear-gradient(118deg, rgba(19, 191, 168, 0.24) 0 1px, transparent 1px 24%, rgba(255, 213, 61, 0.18) 24.2% 24.7%, transparent 25%),
+    repeating-linear-gradient(105deg, transparent 0 88px, rgba(255, 255, 255, 0.08) 89px 91px, transparent 92px 168px);
+  opacity: 0.48;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.hero-video-label {
+  letter-spacing: 0.08em;
+}
+
+.hero-content {
+  box-shadow: 0 26px 90px rgba(0, 0, 0, 0.28);
+}
+
+.hero h1 {
+  text-wrap: balance;
+}
+
+.hero-stats article {
+  overflow: hidden;
+}
+
+.hero-stats article::after {
+  display: block;
+  width: 100%;
+  height: 3px;
+  margin-top: 1rem;
+  content: "";
+  background: linear-gradient(90deg, var(--cta-warm), var(--track-teal), transparent);
+  transform: scaleX(0.72);
+  transform-origin: left;
+}
+
+.ride-map {
+  position: relative;
+}
+
+.ride-map::before {
+  position: absolute;
+  top: 2rem;
+  right: min(4vw, 3rem);
+  width: min(36vw, 420px);
+  aspect-ratio: 1.8;
+  border: 3px solid color-mix(in srgb, var(--track-teal), transparent 48%);
+  border-bottom-color: color-mix(in srgb, var(--cta-hot), transparent 34%);
+  border-radius: 50%;
+  content: "";
+  opacity: 0.22;
+  transform: rotate(-14deg);
+  pointer-events: none;
+}
+
+.attraction-card {
+  position: relative;
+  display: flex;
+  min-height: 310px;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  background:
+    linear-gradient(155deg, color-mix(in srgb, var(--panel-strong), transparent 2%), color-mix(in srgb, var(--panel), transparent 16%)),
+    linear-gradient(135deg, color-mix(in srgb, var(--track-teal), transparent 84%), transparent 52%);
+}
+
+.attraction-card::before {
+  position: absolute;
+  right: -4.5rem;
+  bottom: -4rem;
+  width: 12rem;
+  aspect-ratio: 1;
+  border: 10px solid color-mix(in srgb, var(--track-teal), transparent 62%);
+  border-left-color: color-mix(in srgb, var(--cta-warm), transparent 50%);
+  border-radius: 50%;
+  content: "";
+  opacity: 0.52;
+  transform: rotate(-18deg);
+}
+
+.attraction-card-hero {
+  color: #fff;
+  background:
+    linear-gradient(145deg, rgba(5, 12, 24, 0.96), rgba(17, 39, 54, 0.88)),
+    linear-gradient(135deg, var(--track-teal), var(--deep-blue));
+  box-shadow: 0 34px 100px rgba(24, 191, 168, 0.26);
+}
+
+.attraction-card-hero .map-number,
+.attraction-card-hero p {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.attraction-card h3 {
+  position: relative;
+  z-index: 1;
+  font-family: "Russo One", Inter, sans-serif;
+  font-size: clamp(1.9rem, 3vw, 3.2rem);
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.attraction-card p,
+.metric-row,
+.attraction-card .map-number {
+  position: relative;
+  z-index: 1;
+}
+
+.metric-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 1.2rem;
+}
+
+.metric-row span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0.42rem 0.62rem;
+  border: 1px solid color-mix(in srgb, var(--track-teal), transparent 46%);
+  border-radius: 999px;
+  color: var(--ink);
+  background: color-mix(in srgb, var(--panel-strong), transparent 12%);
+  font-size: 0.82rem;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.attraction-card-hero .metric-row span {
+  border-color: rgba(255, 255, 255, 0.22);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.media-main .media-asset {
+  min-height: 560px;
+  box-shadow: 0 32px 100px rgba(33, 72, 216, 0.22);
+}
+
+.media-video-player {
+  border: 2px solid color-mix(in srgb, var(--track-teal), transparent 40%);
+}
+
+.ticket-band {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(112deg, color-mix(in srgb, var(--cta-warm), transparent 28%), color-mix(in srgb, var(--cta-hot), transparent 72%) 42%, color-mix(in srgb, var(--track-teal), transparent 68%)),
+    var(--panel-strong);
+}
+
+.ticket-band::after {
+  position: absolute;
+  right: -6rem;
+  bottom: -5rem;
+  width: 20rem;
+  aspect-ratio: 1;
+  border: 18px solid color-mix(in srgb, var(--track-teal), transparent 56%);
+  border-radius: 50%;
+  content: "";
+  opacity: 0.34;
+  pointer-events: none;
+}
+
+.model-section,
+.model-copy,
+#boomerang-model {
+  display: none;
+}
+
+.footer.footer-animated {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-height: 330px;
+  margin: clamp(2rem, 5vw, 4rem) 0 0;
+  padding: 0;
+  overflow: hidden;
+  border-top: 1px solid color-mix(in srgb, var(--track-teal), transparent 58%);
+  color: #fff;
+  background:
+    linear-gradient(180deg, rgba(6, 14, 28, 0.08), rgba(6, 14, 28, 0.96) 36%),
+    linear-gradient(135deg, #07101b, #101b2d 48%, #0d2a30);
+}
+
+.footer.footer-animated::before {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  content: "";
+  background:
+    repeating-linear-gradient(104deg, transparent 0 92px, rgba(255, 255, 255, 0.08) 93px 95px, transparent 96px 180px),
+    linear-gradient(90deg, rgba(24, 191, 168, 0.16), transparent 42%, rgba(255, 81, 47, 0.12));
+  animation: footerSpeed 16s var(--motion) infinite alternate;
+  pointer-events: none;
+}
+
+#footer-ride {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0.96;
+}
+
+.footer-inner {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  align-items: center;
+  justify-content: space-between;
+  width: min(var(--max), calc(100% - 2rem));
+  padding: 1.3rem 0 1.6rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  transform: translateX(-50%);
+}
+
+.footer-inner p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.footer-inner a {
+  color: #fff;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+@keyframes trackBlueprint {
+  from {
+    transform: translate3d(0, 0, 0) rotate(-1deg);
+  }
+
+  to {
+    transform: translate3d(-5rem, 1.5rem, 0) rotate(-1deg);
+  }
+}
+
+@keyframes footerSpeed {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-4rem, 0, 0);
+  }
+}
+
+@media (max-width: 980px) {
+  .ride-map::before {
+    top: 1rem;
+    width: 52vw;
+  }
+
+  .attraction-card {
+    min-height: 250px;
+  }
+
+  .media-main .media-asset {
+    min-height: 430px;
+  }
+
+  .footer.footer-animated {
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-backdrop::before {
+    opacity: 0.34;
+  }
+
+  .hero-media::before {
+    opacity: 0.28;
+  }
+
+  .hero-stats article::after {
+    width: 44%;
+    margin-top: 0;
+  }
+
+  .attraction-card {
+    min-height: 230px;
+    padding: 1rem;
+  }
+
+  .attraction-card h3 {
+    font-size: clamp(1.7rem, 11vw, 2.7rem);
+  }
+
+  .metric-row span {
+    min-height: 32px;
+    white-space: normal;
+  }
+
+  .media-main .media-asset,
+  .media-asset {
+    height: 260px;
+    min-height: 260px;
+  }
+
+  .footer.footer-animated {
+    min-height: 280px;
+  }
+
+  .footer-inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

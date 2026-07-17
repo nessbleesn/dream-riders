@@ -1,6 +1,6 @@
 import * as THREE from "https://unpkg.com/three@0.160.0/build/three.module.js";
 
-const canvas = document.querySelector("#boomerang-model");
+const canvas = document.querySelector("#footer-ride, #boomerang-model");
 
 if (canvas) {
   const scene = new THREE.Scene();
@@ -9,10 +9,10 @@ if (canvas) {
   renderer.outputColorSpace = THREE.SRGBColorSpace;
 
   const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
-  camera.position.set(0, 4.4, 10.5);
+  camera.position.set(0, 4.1, 11.2);
 
   const root = new THREE.Group();
-  root.rotation.x = -0.08;
+  root.rotation.x = -0.11;
   scene.add(root);
 
   scene.add(new THREE.AmbientLight(0xffffff, 1.15));
@@ -118,7 +118,7 @@ if (canvas) {
     root.add(cylinderBetween(groundRight, point.clone().add(new THREE.Vector3(0.08, -0.08, 0.16)), 0.055, supportMaterial));
   }
 
-  const ground = new THREE.Mesh(new THREE.CircleGeometry(8.8, 96), groundMaterial);
+  const ground = new THREE.Mesh(new THREE.CircleGeometry(9.6, 96), groundMaterial);
   ground.rotation.x = -Math.PI / 2;
   ground.position.y = -1.05;
   ground.position.z = 0;
@@ -159,7 +159,7 @@ if (canvas) {
 
   const render = () => {
     const elapsed = clock.getElapsedTime();
-    const progress = (elapsed * 0.055) % 1;
+    const progress = (elapsed * 0.072) % 1;
     const point = baseCurve.getPointAt(progress);
     const tangent = baseCurve.getTangentAt(progress).normalize();
     car.position.copy(point).add(new THREE.Vector3(0, 0.18, 0));
