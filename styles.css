@@ -79,7 +79,7 @@ a {
   top: 0;
   z-index: 30;
   display: grid;
-  grid-template-columns: auto auto 1fr auto;
+  grid-template-columns: auto auto 1fr;
   gap: 1rem;
   align-items: center;
   min-height: 72px;
@@ -97,6 +97,7 @@ a {
 .skazka-logo,
 .brand,
 .nav a,
+.header-address,
 .header-phone,
 .park-site-button,
 .header-cta,
@@ -171,6 +172,7 @@ h2,
   justify-content: flex-end;
 }
 
+.header-address,
 .header-phone {
   color: rgba(255, 255, 255, 0.82);
   font-size: 0.9rem;
@@ -178,6 +180,13 @@ h2,
   white-space: nowrap;
 }
 
+.header-address {
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.header-address:hover,
 .header-phone:hover {
   color: var(--yellow);
 }
@@ -775,6 +784,7 @@ h1 {
   }
 
   .brand small,
+  .header-address,
   .header-cta {
     display: none;
   }
