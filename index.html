@@ -68,21 +68,7 @@
           <video class="hero-video" poster="assets/hero-poster.jpg" autoplay muted loop playsinline>
             <source src="assets/hero-video.mp4" type="video/mp4" />
           </video>
-          <div class="sun-disc"></div>
-          <figure class="hero-photo-card hero-photo-card-a">
-            <img src="assets/boomerang-loop.webp" alt="Бумеранг с мертвой петлей в Парке Сказка" />
-            <figcaption>Петля 360°</figcaption>
-          </figure>
-          <figure class="hero-photo-card hero-photo-card-b">
-            <img src="assets/boomerang-wide.webp" alt="Вид на трассу Бумеранг днем" />
-            <figcaption>37 метров</figcaption>
-          </figure>
-          <div class="track-loop"></div>
-          <div class="track-rail track-rail-a"></div>
-          <div class="track-rail track-rail-b"></div>
-          <div class="speed-line speed-line-a"></div>
-          <div class="speed-line speed-line-b"></div>
-          <div class="speed-line speed-line-c"></div>
+          <div class="hero-video-label">Видео трассы</div>
         </div>
 
         <div class="hero-content">
@@ -101,15 +87,15 @@
 
         <aside class="hero-stats" aria-label="Ключевые характеристики">
           <article>
-            <span>360°</span>
+            <span><span class="stat-value" data-count="360" data-decimals="0">0</span>°</span>
             <p>мертвая петля</p>
           </article>
           <article>
-            <span>37 м</span>
+            <span><span class="stat-value" data-count="37" data-decimals="0">0</span> м</span>
             <p>высота подъема</p>
           </article>
           <article>
-            <span>85,3</span>
+            <span><span class="stat-value" data-count="85.3" data-decimals="1">0</span></span>
             <p>км/ч скорость</p>
           </article>
         </aside>
@@ -246,6 +232,7 @@
         </div>
       </section>
 
+
       <section class="section faq reveal" id="faq" aria-labelledby="faq-title">
         <div class="section-kicker">Частые вопросы</div>
         <h2 id="faq-title">FAQ для запуска</h2>
@@ -277,6 +264,17 @@
           </details>
         </div>
       </section>
+      <section class="model-section reveal" aria-labelledby="model-title">
+        <div class="model-copy">
+          <div class="section-kicker">Мини-модель трассы</div>
+          <h2 id="model-title">Бумеранг в движении</h2>
+          <p>
+            Внизу — схематичная 3D-модель: бирюзовая трасса, опоры и вагончик,
+            который проходит петлю. Это можно развить в полноценную интерактивную сцену.
+          </p>
+        </div>
+        <canvas id="boomerang-model" aria-label="3D-модель аттракциона Бумеранг"></canvas>
+      </section>
     </main>
 
     <footer class="footer">
@@ -285,6 +283,7 @@
     </footer>
 
     <script src="script.js"></script>
+    <script type="module" src="model.js"></script>
   </body>
 </html>
 
