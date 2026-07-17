@@ -17,6 +17,8 @@
 - `assets/hero-video.mp4` - временное видео для первого экрана и медиаблока.
 - `assets/hero-poster.jpg` - постер для видео.
 - `assets/boomerang-wide.webp`, `assets/boomerang-loop.webp`, `assets/boomerang-track.webp` - временные оптимизированные фото Бумеранга.
+- `assets/smerch-close.webp`, `assets/smerch-wide.webp` - фото аттракциона «Смерч».
+- `assets/vortex-action.webp`, `assets/vortex-wide.webp` - фото аттракциона «Вихрь».
 - `assets/og-dream-riders.jpg` - картинка для соцсетей.
 - Переключатель светлой и темной темы в шапке.
 - Видимый video-first hero без декоративных фигур поверх.
