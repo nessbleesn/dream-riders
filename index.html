@@ -3,15 +3,15 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Dream Riders / Дрим Райдерс · Открытие новой экстрим-зоны</title>
+    <title>Dream Riders / Дрим Райдерс · Новая экстрим-зона в Парке Сказка</title>
     <meta
       name="description"
-      content="1 августа в Парке Сказка открывается Dream Riders: новая экстрим-зона с аттракционами Вихрь, Бумеранг и Смерч."
+      content="1 августа в Парке Сказка открывается Dream Riders: билет действует на весь парк, главный акцент — новая экстрим-зона с аттракционами Вихрь, Бумеранг и Смерч."
     />
-    <meta property="og:title" content="Dream Riders / Дрим Райдерс · Новая экстрим-зона в Парке Сказка" />
+    <meta property="og:title" content="Dream Riders / Дрим Райдерс · Новая экстрим-зона" />
     <meta
       property="og:description"
-      content="Открытие новой экстрим-зоны 1 августа: Вихрь, Бумеранг и Смерч для дневных заездов в Парке Сказка."
+      content="Билет в Парк Сказка с главным событием дня — новой экстрим-зоной Dream Riders."
     />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="assets/og-dream-riders.jpg" />
@@ -27,33 +27,21 @@
     </script>
   </head>
   <body>
-    <div class="page-backdrop" aria-hidden="true">
-      <span class="backdrop-glow backdrop-glow-a"></span>
-      <span class="backdrop-glow backdrop-glow-b"></span>
-      <span class="backdrop-track"></span>
-      <span class="backdrop-speed backdrop-speed-a"></span>
-      <span class="backdrop-speed backdrop-speed-b"></span>
-      <span class="backdrop-noise"></span>
-    </div>
+    <div class="page-backdrop" aria-hidden="true"></div>
 
     <header class="site-header" data-header>
       <a class="skazka-logo" href="https://parkskazka.com/" target="_blank" rel="noreferrer" aria-label="Парк Сказка">
         <img src="assets/skazka-logo-cropped.png" alt="Парк Сказка" />
       </a>
       <a class="brand" href="#top" aria-label="Dream Riders / Дрим Райдерс">
-        <span class="brand-mark" aria-hidden="true"></span>
-        <span>
-          <strong>Dream Riders</strong>
-          <small>Дрим Райдерс</small>
-        </span>
+        <strong>Dream Riders</strong>
+        <small>Дрим Райдерс</small>
       </a>
       <nav class="nav" aria-label="Навигация">
-        <a href="#attractions">Аттракционы</a>
-        <a href="#how">Как попасть</a>
-        <a href="#media">Медиа</a>
-        <a href="#faq">FAQ</a>
+        <a href="#zone">О событии</a>
+        <a href="#attractions">Экстрим-зона</a>
+        <a href="#tickets">Билеты</a>
       </nav>
-      <a class="header-phone" href="tel:+74951336556">+7 (495) 133-65-56</a>
       <button class="theme-toggle" type="button" data-theme-toggle aria-label="Переключить темную тему" aria-pressed="false">
         <span class="theme-toggle-icon theme-toggle-sun">☀</span>
         <span class="theme-toggle-icon theme-toggle-moon">●</span>
@@ -64,32 +52,29 @@
 
     <main id="top">
       <section class="hero reveal" aria-labelledby="hero-title">
-        <div class="hero-media" aria-hidden="true">
-          <video class="hero-video" poster="assets/hero-poster.jpg" autoplay muted loop playsinline>
-            <source src="assets/hero-video.mp4" type="video/mp4" />
-          </video>
-          <div class="hero-video-label">Видео трассы</div>
-        </div>
+        <video class="hero-video" poster="assets/hero-poster.jpg" autoplay muted loop playsinline aria-label="Видео Dream Riders">
+          <source src="assets/hero-video.mp4" type="video/mp4" />
+        </video>
+        <div class="hero-shade" aria-hidden="true"></div>
 
-        <div class="hero-content">
-          <p class="eyebrow">1 августа · открытие новой экстрим-зоны</p>
+        <div class="hero-inner">
+          <p class="eyebrow">1 августа · Парк Сказка</p>
           <p class="hero-title-ru">Дрим Райдерс</p>
-          <h1 id="hero-title">Новая экстрим-зона в Парке Сказка</h1>
+          <h1 id="hero-title">Dream Riders</h1>
           <p class="hero-lead">
-            1 августа в Парке Сказка открывается Dream Riders — новая
-            экстрим-зона с «Вихрем», «Бумерангом» и «Смерчем». Дневные заезды,
-            скорость, высота и перевороты, от которых хочется сразу в очередь.
+            Билет в парк на день открытия новой экстрим-зоны. Главный маршрут —
+            к «Вихрю», «Бумерангу» и «Смерчу», но день остается днем всего Парка Сказка.
           </p>
           <div class="hero-actions" aria-label="Основные действия">
-            <a class="button button-primary" href="#tickets">Купить билет</a>
-            <a class="button button-ghost" href="#attractions">Смотреть аттракционы</a>
+            <a class="button button-primary" href="#tickets">Купить билет в парк</a>
+            <a class="button button-ghost" href="#attractions">Смотреть экстрим-зону</a>
           </div>
         </div>
 
-        <aside class="hero-stats" aria-label="Ключевые характеристики">
+        <aside class="hero-stats" aria-label="Ключевые характеристики Бумеранга">
           <article>
             <span><span class="stat-value" data-count="360" data-decimals="0">0</span>°</span>
-            <p>мертвая петля</p>
+            <p>петля Бумеранга</p>
           </article>
           <article>
             <span><span class="stat-value" data-count="37" data-decimals="0">0</span> м</span>
@@ -97,211 +82,101 @@
           </article>
           <article>
             <span><span class="stat-value" data-count="85.3" data-decimals="1">0</span></span>
-            <p>км/ч на Бумеранге</p>
+            <p>км/ч разгон</p>
           </article>
         </aside>
       </section>
 
-      <section class="intro section reveal" id="attractions">
-        <div class="section-kicker">Dream Riders / Дрим Райдерс · новая зона</div>
-        <div class="intro-grid">
-          <div>
-            <h2>Три аттракциона в одном маршруте адреналина</h2>
-            <p>
-              Night Riders были про ночной парк и огни. Dream Riders — про дневной
-              экстрим, когда видно высоту, траекторию, перевороты и лица тех, кто
-              выходит с аттракциона с фразой: «Еще раз».
-            </p>
-          </div>
-          <div class="feature-list" aria-label="Особенности экстрим-зоны">
-            <p><strong>Премьера:</strong> новая экстрим-зона открывается 1 августа.</p>
-            <p><strong>Фокус:</strong> «Вихрь», «Бумеранг» и «Смерч» в одной зоне.</p>
-            <p><strong>Ощущение:</strong> скорость, высота и участки вниз головой.</p>
-          </div>
-        </div>
+      <section class="park-pass reveal" id="zone" aria-labelledby="zone-title">
+        <div class="section-kicker">Не отдельный билет на три аттракциона</div>
+        <h2 id="zone-title">Один билет — весь парк. Повод приехать — новая экстрим-зона.</h2>
+        <p>
+          Dream Riders — дневной запуск новой зоны внутри Парка Сказка. Гости покупают билет в парк,
+          гуляют по всей территории, а главная точка притяжения дня — «Вихрь», «Бумеранг» и «Смерч».
+        </p>
       </section>
 
-      <section class="section ride-map reveal" aria-labelledby="ride-map-title">
-        <div class="section-kicker">Аттракционы зоны</div>
-        <h2 id="ride-map-title">Каждый заезд — отдельный повод проверить себя</h2>
-        <div class="map-grid">
-          <article class="map-card attraction-card attraction-card-vortex">
-            <span class="map-number">01</span>
-            <h3>Вихрь</h3>
-            <p>Разгон до 36 км/ч и фрагмент трассы, где ты едешь вниз головой.</p>
+      <section class="rides" id="attractions" aria-labelledby="rides-title">
+        <div class="rides-heading reveal">
+          <div>
+            <div class="section-kicker">Новая экстрим-зона</div>
+            <h2 id="rides-title">Три причины свернуть с прогулочного маршрута</h2>
+          </div>
+          <p>Без лишних блоков: только аттракционы, факты и реальные кадры.</p>
+        </div>
+
+        <article class="ride-feature reveal">
+          <figure>
+            <img src="assets/vortex-action.webp" alt="Поезд аттракциона Вихрь на участке вниз головой" />
+          </figure>
+          <div class="ride-copy">
+            <p class="ride-label">Вихрь</p>
+            <h3>Разгон до 36 км/ч и участок вниз головой</h3>
+            <p>Зеленая трасса, фиолетовые опоры и тот самый фрагмент, где тело понимает скорость раньше головы.</p>
             <div class="metric-row">
               <span>36 км/ч</span>
               <span>вниз головой</span>
             </div>
-          </article>
-          <article class="map-card attraction-card attraction-card-hero">
-            <span class="map-number">02</span>
-            <h3>Бумеранг</h3>
+          </div>
+        </article>
+
+        <article class="ride-feature ride-feature-reverse reveal">
+          <figure>
+            <img src="assets/boomerang-loop.webp" alt="Петля 360 градусов аттракциона Бумеранг" />
+          </figure>
+          <div class="ride-copy">
+            <p class="ride-label">Бумеранг</p>
+            <h3>Главная премьера зоны</h3>
             <p>Первая в парке трасса с мертвой петлей 360°, подъемом на 37 метров и разгоном до 85,3 км/ч.</p>
             <div class="metric-row">
               <span>360°</span>
               <span>37 м</span>
               <span>85,3 км/ч</span>
             </div>
-          </article>
-          <article class="map-card attraction-card attraction-card-smerch">
-            <span class="map-number">03</span>
-            <h3>Смерч</h3>
-            <p>34 метра высоты и тот самый момент, когда парк остается далеко внизу.</p>
+          </div>
+        </article>
+
+        <article class="ride-feature reveal">
+          <figure>
+            <img src="assets/smerch-close.webp" alt="Кабины аттракциона Смерч на высоте" />
+          </figure>
+          <div class="ride-copy">
+            <p class="ride-label">Смерч</p>
+            <h3>34 метра над парком</h3>
+            <p>Оранжевые кабины поднимаются над деревьями и превращают панораму парка в часть аттракциона.</p>
             <div class="metric-row">
               <span>34 м</span>
               <span>высота</span>
             </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="section how reveal" id="how" aria-labelledby="how-title">
-        <div class="section-kicker">Как попасть</div>
-        <h2 id="how-title">Открытие проходит днем 1 августа</h2>
-        <div class="steps">
-          <article>
-            <span>01</span>
-            <h3>Выберите день</h3>
-            <p>Главная дата запуска — 1 августа. Сюда добавим точное время старта.</p>
-          </article>
-          <article>
-            <span>02</span>
-            <h3>Купите билет онлайн</h3>
-            <p>Кнопку свяжем с оплатой, лендингом парка или билетным виджетом.</p>
-          </article>
-          <article>
-            <span>03</span>
-            <h3>Приезжайте к запуску</h3>
-            <p>Покажите билет на входе и отправляйтесь в новую экстрим-зону.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section media-section reveal" id="media" aria-labelledby="media-title">
-        <div class="section-heading">
-          <div>
-            <div class="section-kicker">Фото и видео</div>
-            <h2 id="media-title">Первые кадры новой экстрим-зоны</h2>
           </div>
-          <p>
-            Видео оставили крупным и явным: оно должно сразу показывать, что внутри
-            страницы есть движение, скорость и реальная трасса.
-          </p>
-        </div>
-
-        <div class="media-grid">
-          <figure class="media-main">
-            <video class="media-asset media-video-player" controls muted playsinline poster="assets/hero-poster.jpg">
-              <source src="assets/hero-video.mp4" type="video/mp4" />
-            </video>
-            <figcaption>Видео заезда в новой зоне</figcaption>
-          </figure>
-          <figure>
-            <img class="media-asset" src="assets/vortex-action.webp" alt="Поезд аттракциона Вихрь на участке вниз головой" />
-            <figcaption>Вихрь · участок вниз головой</figcaption>
-          </figure>
-          <figure>
-            <img class="media-asset" src="assets/vortex-wide.webp" alt="Трасса аттракциона Вихрь в Парке Сказка" />
-            <figcaption>Вихрь · разгон до 36 км/ч</figcaption>
-          </figure>
-          <figure>
-            <img class="media-asset" src="assets/boomerang-loop.webp" alt="Петля 360 градусов аттракциона Бумеранг" />
-            <figcaption>Петля 360°</figcaption>
-          </figure>
-          <figure>
-            <img class="media-asset" src="assets/smerch-wide.webp" alt="Аттракцион Смерч в Парке Сказка" />
-            <figcaption>Смерч · высота 34 м</figcaption>
-          </figure>
-          <figure>
-            <img class="media-asset" src="assets/smerch-close.webp" alt="Кабины аттракциона Смерч на высоте" />
-            <figcaption>Смерч в движении</figcaption>
-          </figure>
-          <figure>
-            <img class="media-asset" src="assets/boomerang-wide.webp" alt="Дневной вид на трассу Бумеранг в Парке Сказка" />
-            <figcaption>Трасса в дневном парке</figcaption>
-          </figure>
-        </div>
+        </article>
       </section>
 
-      <section class="section ticket-band reveal" id="tickets" aria-labelledby="ticket-title">
+      <section class="ticket-section reveal" id="tickets" aria-labelledby="ticket-title">
         <div>
-          <div class="section-kicker">Старт продаж</div>
-          <h2 id="ticket-title">Билет на открытие Dream Riders</h2>
+          <div class="section-kicker">Билет в парк</div>
+          <h2 id="ticket-title">Приходите в Сказку на день открытия</h2>
           <p>
-            1 августа открывается новая экстрим-зона Парка Сказка. Здесь будет
-            цена, расписание, возрастные ограничения и финальная ссылка на оплату.
+            Билет дает доступ в Парк Сказка. Dream Riders — новый повод приехать именно 1 августа:
+            зайти в экстрим-зону, остаться на прогулку, еду, семейные аттракционы и вечерний парк.
           </p>
         </div>
-        <a class="button button-primary" href="#" aria-label="Плейсхолдер покупки билета">
-          Купить билет
-        </a>
-      </section>
-
-      <section class="section location reveal" aria-labelledby="location-title">
-        <div class="section-kicker">Как добраться</div>
-        <div class="location-grid">
-          <div>
-            <h2 id="location-title">Парк Сказка · Москва</h2>
-            <p>
-              Адрес, координаты, парковку и схему входа можно оставить как на сайте
-              парка или уточнить под конкретную точку входа к новой экстрим-зоне.
-            </p>
-            <a class="button button-ghost" href="https://yandex.ru/maps/" target="_blank" rel="noreferrer">
-              Построить маршрут
-            </a>
-          </div>
-          <div class="location-card">
-            <p><strong>Адрес:</strong> Москва, Зеленое кольцо, 18</p>
-            <p><strong>Телефон:</strong> +7 (495) 133-65-56</p>
-            <p><strong>Дата:</strong> 1 августа, дневная программа</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="section faq reveal" id="faq" aria-labelledby="faq-title">
-        <div class="section-kicker">Частые вопросы</div>
-        <h2 id="faq-title">FAQ для запуска</h2>
-        <div class="faq-list">
-          <details>
-            <summary>Что такое Dream Riders?</summary>
-            <p>
-              Dream Riders / «Дрим Райдерс» — новая дневная экстрим-зона в Парке
-              Сказка с аттракционами «Вихрь», «Бумеранг» и «Смерч».
-            </p>
-          </details>
-          <details>
-            <summary>Какие аттракционы входят в зону?</summary>
-            <p>
-              «Вихрь» разгоняется до 36 км/ч и включает участок вниз головой.
-              «Бумеранг» дает петлю 360°, 37 метров подъема и скорость до
-              85,3 км/ч. «Смерч» поднимает на высоту 34 метра.
-            </p>
-          </details>
-          <details>
-            <summary>Когда открытие?</summary>
-            <p>Открытие запланировано на 1 августа, днем.</p>
-          </details>
-          <details>
-            <summary>Где купить билет?</summary>
-            <p>
-              Ссылка на покупку пока стоит плейсхолдером. Ее можно заменить на
-              страницу оплаты или билетный виджет.
-            </p>
-          </details>
-        </div>
+        <a class="button button-primary" href="#" aria-label="Плейсхолдер покупки билета">Купить билет</a>
       </section>
     </main>
 
-    <footer class="footer footer-animated">
-      <canvas id="footer-ride" aria-hidden="true"></canvas>
-      <div class="footer-inner">
-        <p>Dream Riders / Дрим Райдерс · Парк Сказка · Москва, Крылатское</p>
-        <a href="https://parkskazka.com/" target="_blank" rel="noreferrer">Официальный сайт парка</a>
+    <footer class="site-footer">
+      <div class="footer-media" aria-hidden="true"></div>
+      <div class="footer-content">
+        <p class="footer-kicker">Парк Сказка · 1 августа</p>
+        <strong>Dream Riders</strong>
+        <div class="footer-row">
+          <p>Новая экстрим-зона внутри большого дня в парке.</p>
+          <a href="https://parkskazka.com/" target="_blank" rel="noreferrer">Официальный сайт парка</a>
+        </div>
       </div>
     </footer>
 
     <script src="script.js"></script>
-    <script type="module" src="model.js"></script>
   </body>
 </html>
