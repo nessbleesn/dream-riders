@@ -96,7 +96,6 @@ a {
 
 .skazka-logo,
 .brand,
-.nav a,
 .header-address,
 .header-phone,
 .park-site-button,
@@ -153,18 +152,6 @@ h2,
   font-weight: 900;
 }
 
-.nav {
-  display: flex;
-  justify-content: center;
-  gap: clamp(0.8rem, 2vw, 1.5rem);
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 0.88rem;
-  font-weight: 900;
-}
-
-.nav a:hover {
-  color: var(--yellow);
-}
 .header-actions {
   display: flex;
   gap: 0.65rem;
@@ -740,11 +727,6 @@ h1 {
   .site-header {
     grid-template-columns: auto 1fr auto;
   }
-
-  .nav {
-    display: none;
-  }
-
   .hero,
   .rides-heading,
   .ticket-section {
