@@ -69,8 +69,14 @@
             <source src="assets/hero-video.mp4" type="video/mp4" />
           </video>
           <div class="sun-disc"></div>
-          <div class="hero-photo-card hero-photo-card-a">фото Бумеранга</div>
-          <div class="hero-photo-card hero-photo-card-b">афиша открытия</div>
+          <figure class="hero-photo-card hero-photo-card-a">
+            <img src="assets/boomerang-loop.webp" alt="Бумеранг с мертвой петлей в Парке Сказка" />
+            <figcaption>Петля 360°</figcaption>
+          </figure>
+          <figure class="hero-photo-card hero-photo-card-b">
+            <img src="assets/boomerang-wide.webp" alt="Вид на трассу Бумеранг днем" />
+            <figcaption>37 метров</figcaption>
+          </figure>
           <div class="track-loop"></div>
           <div class="track-rail track-rail-a"></div>
           <div class="track-rail track-rail-b"></div>
@@ -176,32 +182,31 @@
         <div class="section-heading">
           <div>
             <div class="section-kicker">Фото и видео</div>
-            <h2 id="media-title">Сюда встанет настоящий Бумеранг</h2>
+            <h2 id="media-title">Первые кадры Бумеранга</h2>
           </div>
           <p>
-            Сейчас блок держит композицию. Когда будут материалы, заменим
-            плейсхолдеры в <code>assets</code> на дневные фото, видео и афишу.
+            Пока используем временные материалы: видео с трассой, дневные виды и крупный кадр петли. После финальной съемки заменим файлы в <code>assets</code>.
           </p>
         </div>
 
         <div class="media-grid">
           <figure class="media-main">
-            <div class="media-placeholder media-video">
-              <span>hero-video.mp4</span>
-            </div>
-            <figcaption>Главный видеокадр открытия</figcaption>
+            <video class="media-asset media-video-player" controls muted playsinline poster="assets/hero-poster.jpg">
+              <source src="assets/hero-video.mp4" type="video/mp4" />
+            </video>
+            <figcaption>Видео первого заезда по трассе</figcaption>
           </figure>
           <figure>
-            <div class="media-placeholder">gallery-01.jpg</div>
-            <figcaption>Петля и трасса</figcaption>
+            <img class="media-asset" src="assets/boomerang-loop.webp" alt="Петля 360 градусов аттракциона Бумеранг" />
+            <figcaption>Петля 360°</figcaption>
           </figure>
           <figure>
-            <div class="media-placeholder">gallery-02.jpg</div>
-            <figcaption>Эмоции гостей</figcaption>
+            <img class="media-asset" src="assets/boomerang-wide.webp" alt="Дневной вид на трассу Бумеранг в Парке Сказка" />
+            <figcaption>Трасса в дневном парке</figcaption>
           </figure>
           <figure>
-            <div class="media-placeholder">poster.jpg</div>
-            <figcaption>Афиша события</figcaption>
+            <img class="media-asset" src="assets/boomerang-track.webp" alt="Крупный вид трассы Бумеранг снизу" />
+            <figcaption>Подъем и разворот</figcaption>
           </figure>
         </div>
       </section>
@@ -282,4 +287,6 @@
     <script src="script.js"></script>
   </body>
 </html>
+
+
 

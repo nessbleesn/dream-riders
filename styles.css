@@ -415,21 +415,36 @@ code {
 .hero-photo-card {
   position: absolute;
   display: grid;
-  place-items: center;
+  grid-template-rows: 1fr auto;
   width: clamp(170px, 20vw, 280px);
-  min-height: clamp(190px, 24vw, 340px);
+  height: clamp(190px, 24vw, 340px);
+  min-height: 0;
+  overflow: hidden;
   border: 8px solid color-mix(in srgb, var(--panel-strong), transparent 8%);
   border-radius: var(--radius);
   color: color-mix(in srgb, var(--ink), transparent 34%);
-  background:
-    linear-gradient(135deg, color-mix(in srgb, var(--sky), transparent 82%), transparent),
-    linear-gradient(315deg, color-mix(in srgb, var(--flare), transparent 78%), transparent),
-    var(--panel-strong);
+  background: var(--panel-strong);
   font-weight: 900;
   text-align: center;
   text-transform: uppercase;
   box-shadow: var(--shadow);
   backdrop-filter: blur(12px) saturate(1.2);
+}
+
+.hero-photo-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: cover;
+}
+
+.hero-photo-card figcaption {
+  margin: 0;
+  padding: 0.55rem 0.7rem;
+  color: var(--ink);
+  background: color-mix(in srgb, var(--panel-strong), transparent 10%);
+  font-size: 0.78rem;
 }
 
 .hero-photo-card-a {
@@ -442,7 +457,7 @@ code {
   right: 28vw;
   bottom: 4.2rem;
   width: clamp(130px, 15vw, 210px);
-  min-height: clamp(160px, 18vw, 260px);
+  height: clamp(160px, 18vw, 260px);
   transform: rotate(-8deg);
 }
 
@@ -716,6 +731,28 @@ h3 {
 
 .media-main {
   grid-row: span 2;
+}
+
+.media-asset {
+  display: block;
+  width: 100%;
+  height: 250px;
+  min-height: 250px;
+  border: 1px solid var(--glass-line);
+  border-radius: var(--radius);
+  background: var(--panel-strong);
+  box-shadow: var(--shadow);
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.media-main .media-asset {
+  height: 518px;
+  min-height: 518px;
+}
+
+.media-video-player {
+  background: #05070d;
 }
 
 .media-placeholder {
@@ -1014,7 +1051,10 @@ figcaption {
   }
 
   .media-main .media-placeholder,
-  .media-placeholder {
+  .media-placeholder,
+  .media-main .media-asset,
+  .media-asset {
+    height: 240px;
     min-height: 240px;
   }
 }
@@ -1034,3 +1074,4 @@ figcaption {
     transform: none;
   }
 }
+
