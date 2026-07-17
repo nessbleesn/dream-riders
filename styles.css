@@ -79,7 +79,7 @@ a {
   top: 0;
   z-index: 30;
   display: grid;
-  grid-template-columns: auto auto 1fr auto auto;
+  grid-template-columns: auto auto 1fr auto;
   gap: 1rem;
   align-items: center;
   min-height: 72px;
@@ -97,6 +97,8 @@ a {
 .skazka-logo,
 .brand,
 .nav a,
+.header-phone,
+.park-site-button,
 .header-cta,
 .footer-row a,
 .button {
@@ -160,6 +162,45 @@ h2,
 
 .nav a:hover {
   color: var(--yellow);
+}
+.header-actions {
+  display: flex;
+  gap: 0.65rem;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.header-phone {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.9rem;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.header-phone:hover {
+  color: var(--yellow);
+}
+
+.park-site-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0.72rem 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: var(--radius);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  font-size: 0.86rem;
+  font-weight: 900;
+  white-space: nowrap;
+  transition: transform 220ms var(--motion), background 220ms var(--motion), border-color 220ms var(--motion);
+}
+
+.park-site-button:hover {
+  border-color: rgba(255, 212, 59, 0.58);
+  background: rgba(255, 255, 255, 0.16);
+  transform: translateY(-2px);
 }
 
 .theme-toggle {
@@ -245,6 +286,19 @@ h2,
   background: var(--dark);
 }
 
+
+.hero::after {
+  position: absolute;
+  left: -12vw;
+  right: -12vw;
+  bottom: 23vh;
+  z-index: 1;
+  height: 2px;
+  content: "";
+  background: linear-gradient(90deg, transparent, rgba(255, 212, 59, 0.82), rgba(0, 168, 143, 0.76), transparent);
+  transform: rotate(-8deg);
+  opacity: 0.72;
+}
 .hero-video,
 .hero-shade {
   position: absolute;
@@ -255,14 +309,14 @@ h2,
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: saturate(1.08) contrast(1.04) brightness(0.88);
+  filter: saturate(1.06) contrast(1.02) brightness(0.82);
 }
 
 .hero-shade {
   z-index: 1;
   background:
-    linear-gradient(90deg, rgba(7, 16, 24, 0.9), rgba(7, 16, 24, 0.58) 48%, rgba(7, 16, 24, 0.08)),
-    linear-gradient(0deg, rgba(7, 16, 24, 0.92), transparent 42%);
+    linear-gradient(90deg, rgba(7, 16, 24, 0.88), rgba(7, 16, 24, 0.56) 48%, rgba(7, 16, 24, 0.18)),
+    linear-gradient(0deg, rgba(7, 16, 24, 0.9), transparent 44%);
 }
 
 .hero-inner,
@@ -289,14 +343,14 @@ h2,
   display: inline-flex;
   margin: 0 0 0.65rem;
   padding: 0.32rem 0.62rem;
-  border: 1px solid rgba(255, 255, 255, 0.34);
-  border-radius: 999px;
-  background: rgba(0, 168, 143, 0.38);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
   font-size: clamp(1rem, 2vw, 1.38rem);
   font-weight: 800;
   line-height: 1;
   text-transform: uppercase;
-  backdrop-filter: blur(10px);
+
 }
 
 h1,
@@ -326,6 +380,31 @@ h1 {
   font-size: clamp(1.04rem, 1.5vw, 1.28rem);
 }
 
+
+.weather-card {
+  display: grid;
+  gap: 0.22rem;
+  width: min(100%, 520px);
+  margin-top: 1.25rem;
+  padding: 0.9rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.26);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.weather-card strong {
+  color: #fff;
+  font-family: Unbounded, Manrope, sans-serif;
+  font-size: clamp(1.55rem, 3vw, 2.4rem);
+  line-height: 1;
+}
+
+.weather-date {
+  color: var(--yellow);
+  font-size: 0.76rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
@@ -340,10 +419,10 @@ h1 {
 
 .hero-stats article {
   padding: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: var(--radius);
-  background: rgba(7, 16, 24, 0.48);
-  backdrop-filter: blur(14px) saturate(1.12);
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 0;
+  background: transparent;
 }
 
 .hero-stats span {
@@ -630,7 +709,7 @@ h1 {
 
 @media (max-width: 1080px) {
   .site-header {
-    grid-template-columns: auto 1fr auto auto;
+    grid-template-columns: auto 1fr auto;
   }
 
   .nav {
@@ -678,6 +757,19 @@ h1 {
   .brand small,
   .header-cta {
     display: none;
+  }
+  .header-actions {
+    gap: 0.45rem;
+  }
+
+  .header-phone {
+    font-size: 0.78rem;
+  }
+
+  .park-site-button {
+    min-height: 34px;
+    padding: 0.55rem 0.62rem;
+    font-size: 0.76rem;
   }
 
   .skazka-logo {
@@ -797,5 +889,23 @@ h1 {
   .reveal {
     opacity: 1;
     transform: none;
+  }
+}
+
+@media (max-width: 460px) {
+  .brand {
+    display: none;
+  }
+
+  .site-header {
+    grid-template-columns: auto 1fr;
+  }
+
+  .header-actions {
+    justify-self: end;
+  }
+
+  .theme-toggle {
+    display: none;
   }
 }
