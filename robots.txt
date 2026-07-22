@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://parkskazka.com/dream-riders/sitemap.xml
+
