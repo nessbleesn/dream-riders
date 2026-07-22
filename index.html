@@ -3,505 +3,137 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Dream Riders в Парке Сказка — открытие экстрим-зоны</title>
+    <title>Dream Riders / Дрим Райдерс · Новая экстрим-зона в Парке Сказка</title>
     <meta
       name="description"
-      content="1 августа в московском Парке Сказка открывается Dream Riders — новая экстрим-зона с аттракционами Вихрь, Бумеранг и Смерч. Один билет действует на весь парк."
+      content="1 августа в Парке Сказка открывается Dream Riders: билет действует на весь парк, главный акцент — новая экстрим-зона с аттракционами Вихрь, Бумеранг и Смерч."
     />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="theme-color" content="#071018" />
-    <link rel="canonical" href="https://parkskazka.com/dream-riders/" />
-    <link rel="icon" href="assets/skazka-logo-header.webp" type="image/webp" />
-
-    <meta property="og:locale" content="ru_RU" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Парк Сказка" />
-    <meta property="og:title" content="Dream Riders — новая экстрим-зона Парка Сказка" />
+    <meta property="og:title" content="Dream Riders / Дрим Райдерс · Новая экстрим-зона" />
     <meta
       property="og:description"
-      content="Три новые траектории, один билет на весь Парк Сказка. Открытие Dream Riders — 1 августа."
+      content="Билет в Парк Сказка с главным событием дня — новой экстрим-зоной Dream Riders."
     />
-    <meta property="og:url" content="https://parkskazka.com/dream-riders/" />
-    <meta property="og:image" content="https://parkskazka.com/dream-riders/assets/og-dream-riders.jpg" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Американские горки Dream Riders в Парке Сказка" />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Dream Riders — новая экстрим-зона Парка Сказка" />
-    <meta
-      name="twitter:description"
-      content="Открытие 1 августа: Вихрь, Бумеранг и Смерч. Билет действует на весь парк."
-    />
-    <meta name="twitter:image" content="https://parkskazka.com/dream-riders/assets/og-dream-riders.jpg" />
-
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="assets/og-dream-riders.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      rel="preload"
-      as="image"
-      href="assets/hero-poster-mobile.webp"
-      type="image/webp"
-      media="(max-width: 640px)"
-      fetchpriority="high"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800;900&family=Unbounded:wght@600;700;800&display=swap"
+      rel="stylesheet"
     />
-    <link
-      rel="preload"
-      as="image"
-      href="assets/hero-poster.webp"
-      type="image/webp"
-      media="(min-width: 641px)"
-      fetchpriority="high"
-    />
-    <link
-      rel="preload"
-      href="assets/fonts/unbounded-cyrillic.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <style>
-      @font-face {
-        font-family: Manrope;
-        font-style: normal;
-        font-weight: 500 900;
-        font-display: optional;
-        src: url("assets/fonts/manrope-cyrillic.woff2") format("woff2");
-        unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-      }
-      @font-face {
-        font-family: Manrope;
-        font-style: normal;
-        font-weight: 500 900;
-        font-display: optional;
-        src: url("assets/fonts/manrope-latin.woff2") format("woff2");
-        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-      }
-      @font-face {
-        font-family: Unbounded;
-        font-style: normal;
-        font-weight: 600 800;
-        font-display: optional;
-        src: url("assets/fonts/unbounded-cyrillic.woff2") format("woff2");
-        unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-      }
-      @font-face {
-        font-family: Unbounded;
-        font-style: normal;
-        font-weight: 600 800;
-        font-display: optional;
-        src: url("assets/fonts/unbounded-latin.woff2") format("woff2");
-        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-      }
-      :root {
-        --header-height: 76px;
-        --accent-action: #ffd43b;
-        --accent-action-strong: #ef6b22;
-        --text-on-dark: #fdfcf7;
-        --text-on-dark-muted: rgba(253, 252, 247, 0.7);
-        --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-      }
-      *, *::before, *::after { box-sizing: border-box; }
-      html, body { min-width: 320px; margin: 0; }
-      body { overflow-x: clip; font-family: Manrope, sans-serif; }
-      .site-header {
-        position: sticky;
-        top: 0;
-        z-index: 50;
-        display: grid;
-        grid-template-columns: auto auto 1fr;
-        gap: 1rem;
-        align-items: center;
-        min-height: var(--header-height);
-        padding: 0.75rem clamp(1rem, 3vw, 2.5rem);
-        color: var(--text-on-dark);
-        background: rgba(7, 16, 24, 0.9);
-      }
-      .skazka-logo { display: inline-flex; width: 116px; height: 42px; align-items: center; }
-      .skazka-logo img { display: block; width: 100%; height: auto; }
-      .brand { display: grid; color: var(--text-on-dark); text-decoration: none; }
-      .brand strong, .hero-title-ru, .hero h1, .hero-stats span { font-family: Unbounded, Manrope, sans-serif; }
-      .brand strong { font-size: 0.86rem; line-height: 1; text-transform: uppercase; }
-      .brand small { color: rgba(253, 252, 247, 0.58); font-size: 0.68rem; font-weight: 900; }
-      .header-actions { display: flex; gap: 0.65rem; align-items: center; justify-content: flex-end; }
-      .header-address, .header-phone { color: rgba(253, 252, 247, 0.76); font-size: 0.84rem; font-weight: 900; text-decoration: none; white-space: nowrap; }
-      .theme-toggle { position: relative; width: 64px; height: 38px; border: 1px solid rgba(253, 252, 247, 0.22); border-radius: 999px; color: var(--text-on-dark); background: rgba(253, 252, 247, 0.08); }
-      .theme-toggle-icon { position: relative; z-index: 1; display: inline-grid; width: 44%; place-items: center; font-size: 0.7rem; }
-      .theme-toggle-knob { position: absolute; top: 4px; left: 4px; width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, var(--accent-action), var(--accent-action-strong)); }
-      .header-cta, .button { display: inline-flex; min-height: 48px; padding: 0.84rem 1.12rem; align-items: center; justify-content: center; border-radius: 8px; font-weight: 900; line-height: 1.1; text-decoration: none; white-space: nowrap; }
-      .header-cta, .button-primary { color: #101820; background: var(--accent-action); }
-      .hero {
-        position: relative;
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) minmax(260px, 370px);
-        gap: clamp(1.5rem, 4vw, 4.5rem);
-        align-items: end;
-        min-height: calc(100svh - var(--header-height));
-        padding: clamp(5.5rem, 9vw, 8.5rem) clamp(1rem, 4vw, 3.5rem) clamp(2rem, 4vw, 3.5rem);
-        overflow: hidden;
-        color: var(--text-on-dark);
-        background: #071018;
-        isolation: isolate;
-      }
-      .hero-poster, .hero-video, .hero-shade { position: absolute; inset: 0; }
-      .hero-poster { z-index: -4; }
-      .hero-poster img, .hero-video { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
-      .hero-video { z-index: -3; max-width: none; opacity: 0; }
-      .hero-shade { z-index: -2; background: linear-gradient(90deg, rgba(7, 16, 24, 0.94), rgba(7, 16, 24, 0.25)), linear-gradient(0deg, rgba(7, 16, 24, 0.96), transparent 48%); }
-      .hero-inner, .hero-stats { position: relative; z-index: 2; }
-      .hero-inner { max-width: 1050px; }
-      .eyebrow { margin: 0 0 0.85rem; color: var(--accent-action); font-size: 0.75rem; font-weight: 900; letter-spacing: 0.12em; text-transform: uppercase; }
-      .hero-title-ru { margin: 0 0 0.8rem; color: rgba(253, 252, 247, 0.82); font-size: clamp(0.88rem, 1.55vw, 1.14rem); font-weight: 700; text-transform: uppercase; }
-      .hero h1 { max-width: 1050px; margin: 0 0 1.25rem; font-size: clamp(3.45rem, 8.7vw, 9.2rem); font-weight: 800; letter-spacing: -0.045em; line-height: 0.84; text-transform: uppercase; }
-      .title-mask, .title-line { display: block; }
-      .title-mask { overflow: hidden; }
-      .title-line-outline { color: transparent; -webkit-text-stroke: 1px rgba(253, 252, 247, 0.9); }
-      .hero-lead { max-width: 690px; margin: 0; color: var(--text-on-dark-muted); font-size: clamp(1rem, 1.5vw, 1.24rem); }
-      .hero-actions { display: flex; gap: 0.8rem; margin-top: 1.65rem; }
-      .button-ghost { border: 1px solid rgba(253, 252, 247, 0.3); color: var(--text-on-dark); background: rgba(253, 252, 247, 0.08); }
-      .hero-stats { display: grid; gap: 0.55rem; padding-bottom: 1.6rem; }
-      .hero-stats article { padding: 1rem 0; border-top: 1px solid rgba(253, 252, 247, 0.2); }
-      .hero-stats span { display: block; color: var(--accent-action); font-size: clamp(2.15rem, 4vw, 3.45rem); font-weight: 800; line-height: 0.92; }
-      .hero-stats .stat-value { display: inline-block; }
-      .hero-stats p { margin: 0.55rem 0 0; color: var(--text-on-dark-muted); font-size: 0.86rem; font-weight: 900; text-transform: uppercase; }
-      .hero-scroll, .skip-link { position: absolute; }
-      .js .hero-load-item, .js .title-line { opacity: 0; transform: translateY(42px); }
-      @media (max-width: 820px) {
-        :root { --header-height: 68px; }
-        .header-phone { display: none; }
-        .hero { grid-template-columns: 1fr; }
-        .hero-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 0; }
-      }
-      @media (max-width: 640px) {
-        :root { --header-height: 64px; }
-        .site-header { grid-template-columns: auto 1fr; gap: 0.6rem; min-height: 64px; padding: 0.55rem 0.7rem; background: rgba(7, 16, 24, 0.96); }
-        .brand, .header-address, .header-phone { display: none; }
-        .skazka-logo { width: 82px; height: 36px; }
-        .header-actions { gap: 0.42rem; }
-        .theme-toggle { width: 54px; height: 36px; }
-        .theme-toggle-knob { width: 26px; height: 26px; }
-        .header-cta { min-height: 38px; padding: 0.65rem 0.72rem; font-size: 0.76rem; }
-        .hero { min-height: calc(100svh - 64px); padding: 4.8rem 0.8rem 1.2rem; }
-        .hero-shade { background: linear-gradient(180deg, rgba(7, 16, 24, 0.28), rgba(7, 16, 24, 0.97) 78%); }
-        .hero h1 { font-size: clamp(2.65rem, 11.5vw, 4.9rem); line-height: 0.88; }
-        .hero-lead { font-size: 0.96rem; }
-        .hero-actions { flex-direction: column; margin-top: 1.2rem; }
-        .hero-actions .button { width: 100%; white-space: normal; }
-        .hero-stats { gap: 0.45rem; }
-        .hero-stats article { padding: 0.75rem 0; }
-        .hero-stats span { font-size: clamp(1.55rem, 7vw, 2.2rem); }
-        .hero-stats p { font-size: 0.62rem; line-height: 1.25; }
-      }
-    </style>
-    <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-    <noscript><link rel="stylesheet" href="styles.css" /></noscript>
+    <link rel="stylesheet" href="styles.css" />
     <script>
-      document.documentElement.classList.add("js");
-      try {
-        document.documentElement.dataset.theme = localStorage.getItem("dream-riders-theme") || "light";
-      } catch (error) {
-        document.documentElement.dataset.theme = "light";
-      }
-    </script>
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@graph": [
-          {
-            "@type": "WebSite",
-            "@id": "https://parkskazka.com/#website",
-            "url": "https://parkskazka.com/",
-            "name": "Парк Сказка",
-            "inLanguage": "ru-RU"
-          },
-          {
-            "@type": "AmusementPark",
-            "@id": "https://parkskazka.com/#park",
-            "name": "Парк Сказка",
-            "url": "https://parkskazka.com/",
-            "telephone": "+7-495-133-65-56",
-            "image": "https://parkskazka.com/dream-riders/assets/og-dream-riders.jpg",
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "Крылатская улица, 18",
-              "addressLocality": "Москва",
-              "addressCountry": "RU"
-            }
-          },
-          {
-            "@type": "Event",
-            "@id": "https://parkskazka.com/dream-riders/#event",
-            "name": "Открытие экстрим-зоны Dream Riders",
-            "description": "Открытие новой экстрим-зоны с аттракционами Вихрь, Бумеранг и Смерч в Парке Сказка.",
-            "startDate": "2026-08-01",
-            "eventStatus": "https://schema.org/EventScheduled",
-            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-            "image": ["https://parkskazka.com/dream-riders/assets/og-dream-riders.jpg"],
-            "location": { "@id": "https://parkskazka.com/#park" },
-            "organizer": { "@id": "https://parkskazka.com/#park" },
-            "offers": {
-              "@type": "Offer",
-              "url": "https://price.parkskazka.com/"
-            }
-          },
-          {
-            "@type": "FAQPage",
-            "@id": "https://parkskazka.com/dream-riders/#faq",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "Нужен ли отдельный билет в Dream Riders?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Нет. Билет действует на весь Парк Сказка, а Dream Riders входит в программу дня открытия."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Какие аттракционы входят в новую зону?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "В новой экстрим-зоне представлены Вихрь, Бумеранг и Смерч."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Есть ли ограничения для посещения аттракционов?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Да. Ограничения зависят от конкретного аттракциона; актуальные требования размещены у входа и на официальном сайте парка."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Что произойдет при плохой погоде?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Режим работы аттракционов может меняться из-за погодных или технических условий. Перед поездкой проверьте новости Парка Сказка."
-                }
-              }
-            ]
-          }
-        ]
-      }
+      try { document.documentElement.dataset.theme = localStorage.getItem("dream-riders-theme") || "light"; } catch (error) { document.documentElement.dataset.theme = "light"; }
     </script>
   </head>
-  <body id="top">
-    <a class="skip-link" href="#main-content">Перейти к содержанию</a>
+  <body>
     <div class="page-backdrop" aria-hidden="true"></div>
 
     <header class="site-header" data-header>
-      <a
-        class="skazka-logo"
-        href="https://parkskazka.com/"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Официальный сайт Парка Сказка"
-      >
-        <img src="assets/skazka-logo-header.webp" alt="Парк Сказка" width="240" height="70" />
+      <a class="skazka-logo" href="https://parkskazka.com/" target="_blank" rel="noreferrer" aria-label="Парк Сказка">
+        <img src="assets/skazka-logo-cropped.png" alt="Парк Сказка" />
       </a>
-      <a class="brand" href="#top" aria-label="Dream Riders — к началу страницы">
+      <a class="brand" href="#top" aria-label="Dream Riders / Дрим Райдерс">
         <strong>Dream Riders</strong>
         <small>Дрим Райдерс</small>
       </a>
       <div class="header-actions">
-        <a
-          class="header-address"
-          href="https://parkskazka.com/kontakty/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >Москва, Крылатская, 18</a>
+        <a class="header-address" href="https://parkskazka.com/kontakty/#1" target="_blank" rel="noreferrer">Москва, ул. Крылатская, 18</a>
         <a class="header-phone" href="tel:+74951336556">+7 (495) 133-65-56</a>
-        <button
-          class="theme-toggle"
-          type="button"
-          data-theme-toggle
-          aria-label="Переключить темную тему"
-          aria-pressed="false"
-        >
-          <span class="theme-toggle-icon theme-toggle-sun" aria-hidden="true">☀</span>
-          <span class="theme-toggle-icon theme-toggle-moon" aria-hidden="true">●</span>
-          <span class="theme-toggle-knob" aria-hidden="true"></span>
+        <a class="park-site-button" href="https://parkskazka.com" target="_blank" rel="noreferrer">Сайт парка</a>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Переключить темную тему" aria-pressed="false">
+          <span class="theme-toggle-icon theme-toggle-sun">☀</span>
+          <span class="theme-toggle-icon theme-toggle-moon">●</span>
+          <span class="theme-toggle-knob"></span>
         </button>
-        <a class="header-cta" href="https://price.parkskazka.com/">Купить билет</a>
+        <a class="header-cta" href="#tickets">Купить билет</a>
       </div>
     </header>
 
-    <main id="main-content">
-      <section class="hero" aria-labelledby="hero-title">
-        <picture class="hero-poster">
-          <source srcset="assets/hero-poster.webp" media="(min-width: 641px)" type="image/webp" />
-          <img
-            src="assets/hero-poster-mobile.webp"
-            alt="Американские горки Dream Riders над Парком Сказка"
-            width="360"
-            height="640"
-            fetchpriority="high"
-          />
-        </picture>
-        <video
-          class="hero-video"
-          muted
-          loop
-          playsinline
-          preload="none"
-          aria-hidden="true"
-          tabindex="-1"
-          data-hero-video
-        >
-          <source data-src="assets/hero-video-mobile.webm" media="(max-width: 640px)" type="video/webm" />
-          <source data-src="assets/hero-video-mobile.mp4" media="(max-width: 640px)" type="video/mp4" />
-          <source data-src="assets/hero-video-desktop.webm" media="(min-width: 641px)" type="video/webm" />
-          <source data-src="assets/hero-video-desktop.mp4" media="(min-width: 641px)" type="video/mp4" />
+    <main id="top">
+      <section class="hero reveal" aria-labelledby="hero-title">
+        <video class="hero-video" poster="assets/hero-poster.jpg" autoplay muted loop playsinline aria-label="Видео Dream Riders">
+          <source src="assets/hero-video.mp4" type="video/mp4" />
         </video>
         <div class="hero-shade" aria-hidden="true"></div>
-        <div class="hero-track" aria-hidden="true">
-          <span class="hero-track-train"></span>
-        </div>
 
         <div class="hero-inner">
-          <p class="eyebrow hero-load-item">1 августа · Москва · Парк Сказка</p>
-          <p class="hero-title-ru hero-load-item">Dream Riders / Дрим Райдерс</p>
-          <h1 id="hero-title">
-            <span class="title-mask"><span class="title-line">Новая траектория</span></span>
-            <span class="title-mask"><span class="title-line title-line-outline">Парка Сказка</span></span>
-          </h1>
-          <p class="hero-lead hero-load-item">
-            Один билет на весь парк. Три премьеры меняют привычный маршрут:
-            «Вихрь», «Бумеранг» и «Смерч».
+          <p class="eyebrow">1 августа · Парк Сказка</p>
+          <p class="hero-title-ru">Dream Riders / Дрим Райдерс</p>
+          <h1 id="hero-title">Открытие новой экстрим-зоны</h1>
+          <p class="hero-lead">
+            Билет действует на весь парк. Главный повод приехать 1 августа — новая
+            экстрим-зона с «Вихрем», «Бумерангом» и «Смерчем».
           </p>
-          <div class="hero-actions hero-load-item" aria-label="Основные действия">
-            <a class="button button-primary" href="https://price.parkskazka.com/">Купить билет в парк</a>
-            <a class="button button-ghost" href="#trajectory">Проложить маршрут</a>
+          <div class="weather-card" aria-label="Предварительный прогноз погоды на 1 августа">
+            <span class="weather-date">Предварительно · погода 1 августа</span>
+            <strong>+23…+26°C</strong>
+            <span>переменная облачность, возможен дождь · ветер около 4 м/с · уточним ближе к дате</span>
+          </div>
+          <div class="hero-actions" aria-label="Основные действия">
+            <a class="button button-primary" href="#tickets">Купить билет в парк</a>
+            <a class="button button-ghost" href="#attractions">Смотреть экстрим-зону</a>
           </div>
         </div>
 
-        <aside class="hero-stats hero-load-item" aria-label="Ключевые характеристики Бумеранга">
+        <aside class="hero-stats" aria-label="Ключевые характеристики Бумеранга">
           <article>
-            <span><span class="stat-value" data-count="360" data-decimals="0">360</span>°</span>
-            <p>мертвая петля</p>
+            <span><span class="stat-value" data-count="360" data-decimals="0">0</span>°</span>
+            <p>петля Бумеранга</p>
           </article>
           <article>
-            <span><span class="stat-value" data-count="37" data-decimals="0">37</span> м</span>
-            <p>точка подъема</p>
+            <span><span class="stat-value" data-count="37" data-decimals="0">0</span> м</span>
+            <p>подъем Бумеранга</p>
           </article>
           <article>
-            <span><span class="stat-value" data-count="85.3" data-decimals="1">85,3</span></span>
+            <span><span class="stat-value" data-count="85.3" data-decimals="1">0</span></span>
             <p>км/ч разгон</p>
           </article>
         </aside>
-
-        <a class="hero-scroll" href="#zone" aria-label="Прокрутить к описанию события">
-          <span aria-hidden="true"></span>
-          Листайте
-        </a>
       </section>
 
       <section class="park-pass reveal" id="zone" aria-labelledby="zone-title">
-        <div class="section-index" aria-hidden="true">01 / Событие</div>
-        <div class="park-pass-copy">
-          <p class="section-kicker">Не отдельный билет на три аттракциона</p>
-          <h2 id="zone-title">Весь парк — ваш. Новая зона — главный поворот дня.</h2>
-        </div>
-        <p class="park-pass-note">
-          Dream Riders — запуск новой экстрим-зоны внутри Парка Сказка. В день открытия
-          привычная прогулка получает новую траекторию — от спокойного маршрута к трем премьерам.
+        <div class="section-kicker">Не отдельный билет на три аттракциона</div>
+        <h2 id="zone-title">Один билет — весь парк. Повод приехать — новая экстрим-зона.</h2>
+        <p>
+          Dream Riders — дневной запуск новой зоны внутри Парка Сказка. Гости покупают билет в парк,
+          гуляют по всей территории, а главная точка притяжения дня — «Вихрь», «Бумеранг» и «Смерч».
         </p>
-      </section>
-
-      <section class="trajectory" id="trajectory" data-trajectory aria-labelledby="trajectory-title">
-        <div class="trajectory-stage">
-          <div class="trajectory-heading">
-            <p class="section-kicker">Signature route</p>
-            <h2 id="trajectory-title">Три точки.<br />Одна траектория.</h2>
-            <p>Прокрутка ведет по новой линии парка — от первого переворота до высоты над деревьями.</p>
-          </div>
-
-          <div class="trajectory-map">
-            <svg class="trajectory-lines" viewBox="0 0 1200 600" role="img" aria-label="Маршрут между тремя аттракционами">
-              <path
-                class="trajectory-line-base"
-                d="M35 460 C160 90 330 70 432 280 C535 500 650 520 720 280 C790 40 985 80 1165 390"
-              />
-              <path
-                class="trajectory-line-progress"
-                data-trajectory-line
-                d="M35 460 C160 90 330 70 432 280 C535 500 650 520 720 280 C790 40 985 80 1165 390"
-              />
-            </svg>
-            <span class="trajectory-train" data-trajectory-train aria-hidden="true"></span>
-
-            <a class="route-stop route-stop-one" href="#ride-vortex" data-route-stop>
-              <span class="route-number">01</span>
-              <strong>Вихрь</strong>
-              <small>36 км/ч · вниз головой</small>
-            </a>
-            <a class="route-stop route-stop-two" href="#ride-boomerang" data-route-stop>
-              <span class="route-number">02</span>
-              <strong>Бумеранг</strong>
-              <small>360° · 37 м · 85,3 км/ч</small>
-            </a>
-            <a class="route-stop route-stop-three" href="#ride-smerch" data-route-stop>
-              <span class="route-number">03</span>
-              <strong>Смерч</strong>
-              <small>34 м над парком</small>
-            </a>
-          </div>
-        </div>
       </section>
 
       <section class="rides" id="attractions" aria-labelledby="rides-title">
         <div class="rides-heading reveal">
           <div>
-            <p class="section-index" aria-hidden="true">02 / Аттракционы</p>
-            <p class="section-kicker">Новая экстрим-зона</p>
-            <h2 id="rides-title">Три причины свернуть с привычного маршрута</h2>
+            <div class="section-kicker">Новая экстрим-зона</div>
+            <h2 id="rides-title">Три причины свернуть с прогулочного маршрута</h2>
           </div>
-          <p>Реальные кадры и факты — без декораций между вами и скоростью.</p>
+          <p>Без лишних блоков: только аттракционы, факты и реальные кадры.</p>
         </div>
 
-        <article class="ride-feature reveal" id="ride-vortex">
+        <article class="ride-feature reveal">
           <figure>
-            <img
-              src="assets/vortex-action.webp"
-              srcset="assets/vortex-action-800.webp 800w, assets/vortex-action.webp 1900w"
-              sizes="(max-width: 1120px) calc(100vw - 2rem), 58vw"
-              alt="Поезд аттракциона Вихрь проходит участок трассы вниз головой"
-              width="1900"
-              height="957"
-              loading="lazy"
-              decoding="async"
-            />
-            <figcaption>01 · Вихрь</figcaption>
+            <img src="assets/vortex-action.webp" alt="Поезд аттракциона Вихрь на участке вниз головой" />
           </figure>
           <div class="ride-copy">
             <p class="ride-label">Вихрь</p>
-            <h3>Скорость ощущается раньше, чем ее успеваешь назвать</h3>
-            <p>Зеленая трасса, фиолетовые опоры и участок, где поезд проходит вниз головой.</p>
-            <div class="metric-row" aria-label="Характеристики Вихря">
+            <h3>Разгон до 36 км/ч и участок вниз головой</h3>
+            <p>Зеленая трасса, фиолетовые опоры и тот самый фрагмент, где тело понимает скорость раньше головы.</p>
+            <div class="metric-row">
               <span>36 км/ч</span>
               <span>вниз головой</span>
             </div>
           </div>
         </article>
 
-        <article class="ride-feature ride-feature-reverse reveal" id="ride-boomerang">
+        <article class="ride-feature ride-feature-reverse reveal">
           <figure>
-            <img
-              src="assets/boomerang-loop.webp"
-              srcset="assets/boomerang-loop-800.webp 800w, assets/boomerang-loop.webp 1446w"
-              sizes="(max-width: 1120px) calc(100vw - 2rem), 58vw"
-              alt="Поезд проходит мертвую петлю аттракциона Бумеранг"
-              width="1446"
-              height="1080"
-              loading="lazy"
-              decoding="async"
-            />
-            <figcaption>02 · Бумеранг</figcaption>
+            <img src="assets/boomerang-loop.webp" alt="Петля 360 градусов аттракциона Бумеранг" />
           </figure>
           <div class="ride-copy">
             <p class="ride-label">Бумеранг</p>
-            <h3>Главная премьера новой зоны</h3>
-            <p>Мертвая петля 360°, подъем на 37 метров и разгон до 85,3 км/ч складываются в одну непрерывную линию.</p>
-            <div class="metric-row" aria-label="Характеристики Бумеранга">
+            <h3>Главная премьера зоны</h3>
+            <p>Первая в парке трасса с мертвой петлей 360°, подъемом на 37 метров и разгоном до 85,3 км/ч.</p>
+            <div class="metric-row">
               <span>360°</span>
               <span>37 м</span>
               <span>85,3 км/ч</span>
@@ -509,97 +141,48 @@
           </div>
         </article>
 
-        <article class="ride-feature reveal" id="ride-smerch">
+        <article class="ride-feature reveal">
           <figure>
-            <img
-              src="assets/smerch-close.webp"
-              srcset="assets/smerch-close-800.webp 800w, assets/smerch-close.webp 1800w"
-              sizes="(max-width: 1120px) calc(100vw - 2rem), 58vw"
-              alt="Оранжевые кабины аттракциона Смерч подняты над деревьями парка"
-              width="1800"
-              height="1200"
-              loading="lazy"
-              decoding="async"
-            />
-            <figcaption>03 · Смерч</figcaption>
+            <img src="assets/smerch-close.webp" alt="Кабины аттракциона Смерч на высоте" />
           </figure>
           <div class="ride-copy">
             <p class="ride-label">Смерч</p>
-            <h3>Панорама парка становится частью аттракциона</h3>
-            <p>Оранжевые кабины поднимаются над деревьями — 34 метра воздуха и открытого горизонта.</p>
-            <div class="metric-row" aria-label="Характеристики Смерча">
+            <h3>34 метра над парком</h3>
+            <p>Оранжевые кабины поднимаются над деревьями и превращают панораму парка в часть аттракциона.</p>
+            <div class="metric-row">
               <span>34 м</span>
-              <span>над парком</span>
+              <span>высота</span>
             </div>
           </div>
         </article>
       </section>
 
-      <section class="faq reveal" id="faq" aria-labelledby="faq-title">
-        <div class="faq-heading">
-          <p class="section-index" aria-hidden="true">03 / Перед поездкой</p>
-          <p class="section-kicker">Коротко о главном</p>
-          <h2 id="faq-title">Ответы до старта</h2>
-        </div>
-        <div class="faq-list">
-          <details>
-            <summary>Нужен ли отдельный билет в Dream Riders?</summary>
-            <p>Нет. Билет действует на весь Парк Сказка, а Dream Riders входит в программу дня открытия.</p>
-          </details>
-          <details>
-            <summary>Какие аттракционы входят в новую зону?</summary>
-            <p>«Вихрь», «Бумеранг» и «Смерч». Все три премьеры собраны на одной странице выше.</p>
-          </details>
-          <details>
-            <summary>Есть ли ограничения для посещения?</summary>
-            <p>Да, они зависят от конкретного аттракциона. Проверьте актуальные требования у входа и на официальном сайте парка.</p>
-          </details>
-          <details>
-            <summary>Что будет при плохой погоде?</summary>
-            <p>Режим работы аттракционов может меняться из-за погодных или технических условий. Перед поездкой проверьте новости парка.</p>
-          </details>
-        </div>
-      </section>
-
       <section class="ticket-section reveal" id="tickets" aria-labelledby="ticket-title">
-        <div class="ticket-copy">
-          <p class="section-index" aria-hidden="true">04 / Билет</p>
-          <p class="section-kicker">1 августа · Парк Сказка</p>
-          <h2 id="ticket-title">Ваша новая траектория начинается здесь</h2>
+        <div>
+          <div class="section-kicker">Билет в парк</div>
+          <h2 id="ticket-title">Приходите в Сказку на день открытия</h2>
           <p>
-            Один билет открывает весь парк. Dream Riders — причина выбрать именно день открытия
-            и первой пройти маршрут из трех премьер.
+            Билет дает доступ в Парк Сказка. Dream Riders — новый повод приехать именно 1 августа:
+            зайти в экстрим-зону, остаться на прогулку, еду, семейные аттракционы и вечерний парк.
           </p>
         </div>
-        <div class="ticket-action">
-          <span>Онлайн-покупка на официальном сайте</span>
-          <a class="button button-primary button-large" href="https://price.parkskazka.com/">Купить билет</a>
-        </div>
+        <a class="button button-primary" href="#" aria-label="Плейсхолдер покупки билета">Купить билет</a>
       </section>
     </main>
 
     <footer class="site-footer">
-      <div class="footer-track" aria-hidden="true"></div>
+      <div class="footer-media" aria-hidden="true"></div>
       <div class="footer-content">
-        <p class="footer-kicker">Dream Riders / Дрим Райдерс</p>
-        <p class="footer-mainline">Парк Сказка · Москва, Крылатская улица, 18</p>
-        <a
-          class="footer-site-button"
-          href="https://parkskazka.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >Официальный сайт Парка</a>
+        <p class="footer-mainline">Парк Сказка · Москва, Крылатское · дневная программа DREAM RIDERS (Дрим Райдерс)</p>
+        <a class="footer-site-button" href="https://parkskazka.ru/" target="_blank" rel="noreferrer">Официальный сайт Парка</a>
         <div class="footer-meta">
-          <span>© 2026 ООО «Парк Сказка»</span>
-          <a href="https://parkskazka.com/" target="_blank" rel="noopener noreferrer">parkskazka.com</a>
+          <span>© 2026</span>
+          <a href="https://parkskazka.ru/" target="_blank" rel="noreferrer">parkskazka.ru</a>
           <a href="tel:+74951336556">+7 (495) 133-65-56</a>
         </div>
       </div>
     </footer>
 
-    <noscript>
-      <div class="noscript-note">Видео и анимация отключены, но вся информация и покупка билетов доступны.</div>
-    </noscript>
-    <script src="script.js" defer></script>
+    <script src="script.js"></script>
   </body>
 </html>
