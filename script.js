@@ -1,6 +1,6 @@
 import { eventData, formatRubles } from "./event-config.js";
 
-document.documentElement.classList.add("js", "reveal-ready");
+document.documentElement.classList.add("js");
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const header = document.querySelector("[data-header]");
@@ -8,7 +8,6 @@ const hero = document.querySelector(".hero");
 const finalSection = document.querySelector(".final-cta");
 const ticketDock = document.querySelector("[data-ticket-dock]");
 const heroVideo = document.querySelector(".hero-video");
-const revealItems = document.querySelectorAll(".reveal:not(.is-visible)");
 const statValues = document.querySelectorAll(".stat-value");
 
 const fillEventData = () => {
@@ -117,6 +116,60 @@ if (heroVideo) {
   }
 }
 
+const setupScrollMotion = () => {
+  const motionGroups = [
+    [".ticker", "up", 0],
+    [".sales-meter-heading > *", "up", 100],
+    [".sales-meter-panel > *", "up", 90],
+    [".section-intro > *", "up", 100],
+    [".proof-card", "up", 110],
+    [".boomerang-visual", "left", 0],
+    [".boomerang-copy > .section-label, .boomerang-copy > h2, .boomerang-copy > .boomerang-lead", "right", 90],
+    [".ride-stats > div", "right", 100],
+    [".experience-heading > *", "up", 100],
+    [".ride-slider-viewport", "scale", 0],
+    [".ride-slider-tabs > *, .ride-slider-controls > *", "up", 70],
+    [".tickets-heading > *", "up", 100],
+    [".ticket-brand, .ticket-date, .ticket-access, .ticket-price", "up", 90],
+    [".ticket-stub > *", "right", 70],
+    [".visit-heading > *", "up", 100],
+    [".visit-card", "up", 100],
+    [".faq-heading > *", "up", 90],
+    [".faq-list details", "up", 90],
+    [".final-copy > .section-label, .final-copy > h2, .final-copy > p, .footer-cta-wrap", "up", 100],
+    [".footer > *", "up", 90],
+  ];
+
+  motionGroups.forEach(([selector, direction, stagger]) => {
+    document.querySelectorAll(selector).forEach((element, index) => {
+      element.dataset.motion = direction;
+      element.style.setProperty("--motion-delay", `${Math.min(index * stagger, 360)}ms`);
+    });
+  });
+
+  const motionTargets = document.querySelectorAll("[data-motion]");
+  if (reducedMotion || !("IntersectionObserver" in window)) {
+    motionTargets.forEach((element) => element.classList.add("is-visible"));
+    return;
+  }
+
+  document.documentElement.classList.add("motion-ready");
+  const motionObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        motionObserver.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.12, rootMargin: "0px 0px -8%" }
+  );
+
+  motionTargets.forEach((element) => motionObserver.observe(element));
+};
+
+setupScrollMotion();
+
 const formatStat = (value, decimals) => value.toFixed(decimals).replace(".", ",");
 
 if (!reducedMotion) {
@@ -164,24 +217,11 @@ const animateStats = () => {
 };
 
 if (reducedMotion || !("IntersectionObserver" in window)) {
-  revealItems.forEach((item) => item.classList.add("is-visible"));
   statValues.forEach((stat) => {
     stat.textContent = formatStat(Number(stat.dataset.count || 0), Number(stat.dataset.decimals || 0));
   });
   statsGroup?.classList.add("is-complete");
 } else {
-  const revealObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("is-visible");
-        revealObserver.unobserve(entry.target);
-      });
-    },
-    { threshold: 0.12 }
-  );
-  revealItems.forEach((item) => revealObserver.observe(item));
-
   if (statsGroup) {
     const statsObserver = new IntersectionObserver(
       ([entry]) => {
