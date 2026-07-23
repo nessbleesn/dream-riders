@@ -533,12 +533,15 @@ const rideSlider = document.querySelector("[data-ride-slider]");
 if (rideSlider) {
   const slides = [...rideSlider.querySelectorAll(".ride-slide")];
   const tabs = [...rideSlider.querySelectorAll("[data-slide-go]")];
+  const sliderViewport = rideSlider.querySelector(".ride-slider-viewport");
   const previousButton = rideSlider.querySelector("[data-slider-prev]");
   const nextButton = rideSlider.querySelector("[data-slider-next]");
   const currentLabel = rideSlider.querySelector("[data-slider-current]");
   let activeIndex = 0;
   let autoplayTimer = null;
   let pointerStartX = null;
+  let pointerStartY = null;
+  let activePointerId = null;
   let isHovered = false;
   let hasFocus = false;
   let isDragging = false;
@@ -584,27 +587,39 @@ if (rideSlider) {
     showSlide(activeIndex + (event.key === "ArrowRight" ? 1 : -1));
   });
 
-  rideSlider.addEventListener("pointerdown", (event) => {
+  const resetPointer = () => {
+    pointerStartX = null;
+    pointerStartY = null;
+    activePointerId = null;
+    isDragging = false;
+    sliderViewport?.classList.remove("is-dragging");
+    scheduleAutoplay();
+  };
+
+  sliderViewport?.addEventListener("pointerdown", (event) => {
+    if (event.pointerType === "mouse" && event.button !== 0) return;
     pointerStartX = event.clientX;
+    pointerStartY = event.clientY;
+    activePointerId = event.pointerId;
     isDragging = true;
+    sliderViewport.classList.add("is-dragging");
+    sliderViewport.setPointerCapture?.(event.pointerId);
     scheduleAutoplay();
   });
 
-  rideSlider.addEventListener("pointerup", (event) => {
-    if (pointerStartX !== null) {
-      const distance = event.clientX - pointerStartX;
-      if (Math.abs(distance) > 52) showSlide(activeIndex + (distance < 0 ? 1 : -1));
+  sliderViewport?.addEventListener("pointerup", (event) => {
+    if (pointerStartX !== null && pointerStartY !== null && event.pointerId === activePointerId) {
+      const distanceX = event.clientX - pointerStartX;
+      const distanceY = event.clientY - pointerStartY;
+      if (Math.abs(distanceX) > 44 && Math.abs(distanceX) > Math.abs(distanceY) * 1.15) {
+        showSlide(activeIndex + (distanceX < 0 ? 1 : -1));
+      }
     }
-    pointerStartX = null;
-    isDragging = false;
-    scheduleAutoplay();
+    if (sliderViewport.hasPointerCapture?.(event.pointerId)) sliderViewport.releasePointerCapture(event.pointerId);
+    resetPointer();
   });
 
-  rideSlider.addEventListener("pointercancel", () => {
-    pointerStartX = null;
-    isDragging = false;
-    scheduleAutoplay();
-  });
+  sliderViewport?.addEventListener("pointercancel", resetPointer);
 
   rideSlider.addEventListener("mouseenter", () => {
     isHovered = true;

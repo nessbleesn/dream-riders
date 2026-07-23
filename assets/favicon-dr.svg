@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="15" fill="#071d2c"/>
+  <path d="M7 49c12-7 22-4 32-13 6-5 10-12 18-20" fill="none" stroke="#31afe3" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="54" cy="17" r="4" fill="#76cff3"/>
+  <text x="31" y="41" fill="#fff" font-family="Arial Narrow,Arial,sans-serif" font-size="29" font-weight="900" text-anchor="middle" letter-spacing="-2">DR</text>
+</svg>

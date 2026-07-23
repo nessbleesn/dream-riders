@@ -822,6 +822,17 @@ h3,
   border-radius: var(--radius);
   background: var(--navy);
   box-shadow: 0 32px 80px rgba(7, 29, 44, 0.2);
+  cursor: grab;
+  touch-action: pan-y;
+}
+
+.ride-slider-viewport.is-dragging {
+  cursor: grabbing;
+}
+
+.ride-slider-viewport img {
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 .ride-slide {
