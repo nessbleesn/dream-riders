@@ -10,8 +10,9 @@ body::before {
   height: 100%;
   pointer-events: none;
   background:
-    radial-gradient(circle at 12% 22%, rgba(118, 207, 243, 0.16), transparent 34%),
-    linear-gradient(180deg, var(--ice), rgba(255, 255, 255, 0.94) 46%, var(--sky));
+    radial-gradient(circle at 12% 22%, rgba(118, 207, 243, 0.26), transparent 34%),
+    radial-gradient(circle at 84% 72%, rgba(49, 175, 227, 0.16), transparent 30%),
+    linear-gradient(180deg, var(--ice), rgba(255, 255, 255, 0.91) 46%, var(--sky));
 }
 
 main,
@@ -70,6 +71,9 @@ h3,
 .park-logo img {
   width: 100%;
   height: auto;
+  filter:
+    drop-shadow(0 0 5px rgba(49, 175, 227, 0.36))
+    drop-shadow(0 2px 8px rgba(49, 175, 227, 0.16));
 }
 
 .event-brand {
@@ -81,6 +85,11 @@ h3,
 .footer strong {
   font-size: 1.25rem;
   letter-spacing: 0.055em;
+}
+
+.event-brand strong {
+  color: var(--blue-strong);
+  text-shadow: 0 0 12px rgba(49, 175, 227, 0.25);
 }
 
 .event-brand span,
@@ -121,19 +130,35 @@ h3,
   position: sticky;
   top: var(--topbar-h);
   z-index: var(--layer-ticketbar);
+  isolation: isolate;
   margin-top: var(--topbar-h);
+  overflow: clip;
   color: var(--color-text-strong);
   background:
     linear-gradient(
       100deg,
-      rgba(217, 243, 255, 0.98),
-      rgba(255, 255, 255, 0.96) 48%,
-      rgba(118, 207, 243, 0.3)
+      rgba(196, 237, 255, 0.99),
+      rgba(238, 250, 255, 0.98) 45%,
+      rgba(118, 207, 243, 0.52)
     );
   border-bottom: 0;
-  box-shadow: 0 16px 40px rgba(7, 29, 44, 0.13);
+  box-shadow: 0 14px 36px rgba(7, 29, 44, 0.16);
   backdrop-filter: blur(18px) saturate(1.25);
   -webkit-backdrop-filter: blur(18px) saturate(1.25);
+}
+
+.ticketbar::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 72% 50%, rgba(255, 255, 255, 0.7), transparent 17%),
+    linear-gradient(104deg, transparent 20%, rgba(255, 255, 255, 0.68) 48%, transparent 68%);
+  content: "";
+  opacity: 0.7;
+  pointer-events: none;
+  transform: translateX(-42%);
+  animation: ticketbar-beam 6s var(--ease-in-out) infinite;
 }
 
 .ticketbar::after {
@@ -155,13 +180,22 @@ h3,
   pointer-events: none;
 }
 
+@keyframes ticketbar-beam {
+  0%,
+  28% { transform: translateX(-42%); }
+  68%,
+  100% { transform: translateX(42%); }
+}
+
 .ticketbar-inner {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: minmax(220px, 0.95fr) auto minmax(150px, 1fr) auto;
   gap: clamp(0.8rem, 2.4vw, 2rem);
   align-items: center;
-  min-height: 76px;
-  padding-block: 0.55rem;
+  min-height: 68px;
+  padding-block: 0.4rem;
 }
 
 .ticketbar-date {
@@ -171,8 +205,7 @@ h3,
   align-items: center;
 }
 
-.ticketbar-date label,
-.ticketbar-price span {
+.ticketbar-date label {
   color: var(--color-text-muted);
   font-size: 0.64rem;
   font-weight: 800;
@@ -188,7 +221,7 @@ h3,
   border: 1px solid rgba(18, 56, 79, 0.22);
   border-radius: 0.75rem;
   color: var(--color-text-strong);
-  background-color: rgba(255, 255, 255, 0.72);
+  background-color: rgba(255, 255, 255, 0.84);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   font: 800 0.76rem/1.2 var(--body);
@@ -196,13 +229,13 @@ h3,
 }
 
 .ticketbar-price {
-  display: grid;
-  gap: 0.1rem;
+  display: flex;
+  align-items: center;
   min-width: 112px;
 }
 
 .ticketbar-price strong {
-  color: var(--blue-strong);
+  color: var(--navy);
   font-family: var(--display);
   font-size: 1.7rem;
   font-weight: 700;
@@ -242,6 +275,15 @@ h3,
 
 .ticketbar-cta {
   min-width: 152px;
+  color: var(--white);
+  background: var(--navy);
+  box-shadow: 0 8px 20px rgba(7, 29, 44, 0.2), 0 0 0 3px rgba(255, 255, 255, 0.34);
+}
+
+.ticketbar-cta:hover {
+  color: var(--navy);
+  background: var(--white);
+  box-shadow: 0 10px 24px rgba(7, 29, 44, 0.18), 0 0 0 3px rgba(49, 175, 227, 0.28);
 }
 
 .hero {
@@ -289,7 +331,9 @@ h3,
   letter-spacing: 0.032em;
   line-height: 0.84;
   -webkit-text-stroke: 0;
-  text-shadow: 0 10px 34px rgba(7, 29, 44, 0.58);
+  text-shadow:
+    0 0 16px rgba(217, 243, 255, 0.5),
+    0 10px 36px rgba(7, 29, 44, 0.72);
 }
 
 .hero h1 span {
@@ -300,6 +344,9 @@ h3,
   margin-top: -0.055em;
   color: var(--blue-strong);
   font-size: 0.86em;
+  text-shadow:
+    0 0 18px rgba(49, 175, 227, 0.72),
+    0 10px 34px rgba(7, 29, 44, 0.76);
 }
 
 .hero-subtitle {
@@ -1409,17 +1456,17 @@ h3,
   z-index: 300;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  gap: clamp(1.5rem, 4vw, 3.5rem);
+  gap: clamp(1rem, 2.5vw, 2rem);
   align-items: center;
   width: auto;
-  max-width: 1120px;
+  max-width: 920px;
   margin-inline: auto;
-  padding: clamp(1.15rem, 2.4vw, 1.75rem);
+  padding: 0.85rem 1rem;
   color: var(--navy);
   background: rgba(255, 255, 255, 0.97);
   border: 1px solid rgba(49, 175, 227, 0.32);
-  border-radius: calc(var(--radius) * 0.75);
-  box-shadow: 0 24px 70px rgba(7, 29, 44, 0.28);
+  border-radius: 0.8rem;
+  box-shadow: 0 18px 50px rgba(7, 29, 44, 0.24);
   opacity: 0;
   transform: translateY(calc(100% + 2rem));
   transition: opacity 0.28s ease, transform 0.4s var(--ease-out);
@@ -1451,23 +1498,23 @@ html[data-cookie-consent-open="true"] .cookie-consent {
 .cookie-consent-copy {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
-  gap: 1rem;
-  align-items: start;
+  gap: 0.75rem;
+  align-items: center;
 }
 
 .cookie-consent-icon {
   display: grid;
   place-items: center;
-  width: 3.25rem;
-  height: 3.25rem;
+  width: 2.45rem;
+  height: 2.45rem;
   color: var(--blue-strong);
   background: var(--sky);
   border-radius: 50%;
 }
 
 .cookie-consent-icon svg {
-  width: 1.85rem;
-  height: 1.85rem;
+  width: 1.45rem;
+  height: 1.45rem;
   fill: none;
   stroke: currentColor;
   stroke-width: 1.7;
@@ -1481,25 +1528,26 @@ html[data-cookie-consent-open="true"] .cookie-consent {
 
 .cookie-consent h2 {
   margin: 0;
-  font-size: clamp(2rem, 3.6vw, 3.2rem);
-  line-height: 0.95;
+  font-size: clamp(1.55rem, 2.4vw, 2.15rem);
+  line-height: 1;
 }
 
 .cookie-consent-copy p:last-child {
   max-width: 40rem;
-  margin: 0.55rem 0 0;
+  margin: 0.3rem 0 0;
   color: var(--muted);
-  font-size: 0.8rem;
-  line-height: 1.5;
+  font-size: 0.72rem;
+  line-height: 1.4;
 }
 
 .cookie-consent-actions {
   display: flex;
-  gap: 0.7rem;
+  gap: 0.55rem;
 }
 
 .cookie-consent-actions .button {
-  min-width: 10.5rem;
+  min-width: 8.75rem;
+  padding-inline: 1rem;
   white-space: nowrap;
 }
 
@@ -1599,8 +1647,8 @@ html[data-cookie-consent-open="true"] .cookie-consent {
   .ticketbar-inner {
     grid-template-columns: minmax(108px, 1fr) auto auto;
     gap: 0.5rem;
-    min-height: 72px;
-    padding-block: 0.45rem;
+    min-height: 64px;
+    padding-block: 0.3rem;
   }
 
   .ticketbar-date {
@@ -1627,10 +1675,6 @@ html[data-cookie-consent-open="true"] .cookie-consent {
 
   .ticketbar-price {
     min-width: 66px;
-  }
-
-  .ticketbar-price span {
-    display: none;
   }
 
   .ticketbar-price strong {
@@ -1817,8 +1861,9 @@ html[data-cookie-consent-open="true"] .cookie-consent {
 
   .cookie-consent {
     grid-template-columns: 1fr;
-    gap: 1.1rem;
+    gap: 0.75rem;
     max-height: calc(100svh - 1rem);
+    padding: 0.8rem;
     overflow-y: auto;
   }
 
@@ -1829,11 +1874,27 @@ html[data-cookie-consent-open="true"] .cookie-consent {
 
 @media (max-width: 480px) {
   .event-brand {
-    display: none;
+    display: grid;
+    justify-self: end;
+    text-align: right;
   }
 
   .topbar {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: auto 1fr;
+  }
+
+  .topbar-actions {
+    display: none;
+  }
+
+  .event-brand strong {
+    font-size: 1rem;
+    letter-spacing: 0.04em;
+  }
+
+  .event-brand span {
+    display: block;
+    font-size: 0.54rem;
   }
 
   .ticketbar-inner {
@@ -1937,17 +1998,25 @@ html[data-cookie-consent-open="true"] .cookie-consent {
     bottom: 0.5rem;
     left: 0.5rem;
     width: calc(100% - 1rem);
-    padding: 1rem;
+    padding: 0.72rem;
   }
 
   .cookie-consent-copy {
-    grid-template-columns: 1fr;
-    gap: 0.65rem;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.6rem;
   }
 
   .cookie-consent-icon {
-    width: 2.7rem;
-    height: 2.7rem;
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+
+  .cookie-consent h2 {
+    font-size: 1.45rem;
+  }
+
+  .cookie-consent-copy p:last-child {
+    font-size: 0.66rem;
   }
 
   .cookie-consent-actions {
@@ -1982,5 +2051,10 @@ html[data-cookie-consent-open="true"] .cookie-consent {
 
   .cookie-consent {
     transition: none;
+  }
+
+  .ticketbar::before {
+    animation: none;
+    transform: none;
   }
 }

@@ -108,19 +108,24 @@ const setupKineticBackground = () => {
   let pixelRatio = 1;
   let animationFrame = 0;
   let isVisible = !document.hidden;
+  let laneCount = 5;
+  let particleCount = 18;
   const pointer = { x: 0, y: 0, targetX: 0, targetY: 0 };
   const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
   const routeY = (x, lane, time, scrollProgress) => {
-    const base = height * (0.17 + lane * 0.225);
-    const amplitude = 20 + lane * 8;
+    const laneProgress = lane / Math.max(laneCount - 1, 1);
+    const base = height * (0.14 + laneProgress * 0.72);
+    const amplitude = 24 + laneProgress * 18;
     const wave = Math.sin((x / Math.max(width, 1)) * Math.PI * (2.1 + lane * 0.34) + time * (0.38 + lane * 0.11) + scrollProgress * Math.PI * 2.5);
-    return base + wave * amplitude + pointer.y * (10 + lane * 2) + pointer.x * (lane % 2 ? 8 : -8);
+    return base + wave * amplitude + pointer.y * (13 + lane * 2) + pointer.x * (lane % 2 ? 11 : -11);
   };
 
   const resize = () => {
     width = window.innerWidth;
     height = window.innerHeight;
+    laneCount = width < 600 ? 4 : 5;
+    particleCount = width < 600 ? 12 : 18;
     pixelRatio = Math.min(window.devicePixelRatio || 1, 1.5);
     canvas.width = Math.round(width * pixelRatio);
     canvas.height = Math.round(height * pixelRatio);
@@ -139,20 +144,20 @@ const setupKineticBackground = () => {
     pointer.y += (pointer.targetY - pointer.y) * 0.045;
     context.clearRect(0, 0, width, height);
 
-    for (let lane = 0; lane < 4; lane += 1) {
+    for (let lane = 0; lane < laneCount; lane += 1) {
       context.beginPath();
       for (let x = -24; x <= width + 24; x += 24) {
         const y = routeY(x, lane, time, scrollProgress);
         if (x === -24) context.moveTo(x, y);
         else context.lineTo(x, y);
       }
-      context.strokeStyle = `rgba(49, 175, 227, ${0.11 + lane * 0.02})`;
-      context.lineWidth = lane === 1 ? 2 : 1.15;
+      context.strokeStyle = `rgba(49, 175, 227, ${0.18 + lane * 0.018})`;
+      context.lineWidth = lane === 1 ? 2.5 : 1.55;
       context.stroke();
     }
 
-    for (let index = 0; index < 12; index += 1) {
-      const lane = index % 4;
+    for (let index = 0; index < particleCount; index += 1) {
+      const lane = index % laneCount;
       const speed = 0.018 + lane * 0.004;
       const phase = (time * speed + index * 0.091 + scrollProgress * (0.2 + lane * 0.04)) % 1;
       const x = phase * (width + 80) - 40;
@@ -162,13 +167,18 @@ const setupKineticBackground = () => {
       context.beginPath();
       context.moveTo(x - 20, y);
       context.lineTo(x - 7, y);
-      context.strokeStyle = "rgba(49, 175, 227, 0.28)";
-      context.lineWidth = 1.4;
+      context.strokeStyle = "rgba(49, 175, 227, 0.42)";
+      context.lineWidth = 1.7;
       context.stroke();
 
       context.beginPath();
+      context.arc(x, y, radius + 4, 0, Math.PI * 2);
+      context.fillStyle = "rgba(118, 207, 243, 0.14)";
+      context.fill();
+
+      context.beginPath();
       context.arc(x, y, radius, 0, Math.PI * 2);
-      context.fillStyle = index % 3 === 0 ? "rgba(49, 175, 227, 0.72)" : "rgba(118, 207, 243, 0.48)";
+      context.fillStyle = index % 3 === 0 ? "rgba(49, 175, 227, 0.88)" : "rgba(118, 207, 243, 0.68)";
       context.fill();
     }
 

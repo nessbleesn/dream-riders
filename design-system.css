@@ -60,7 +60,7 @@
   --radius: clamp(0.85rem, 1.5vw, 1.25rem);
   --control-min-h: 44px;
   --topbar-h: 76px;
-  --ticketbar-h: 76px;
+  --ticketbar-h: 68px;
   --header-stack-h: calc(var(--topbar-h) + var(--ticketbar-h));
 
   /* Depth, layers and motion */
@@ -211,7 +211,7 @@ summary:focus-visible,
 @media (max-width: 780px) {
   :root {
     --topbar-h: 64px;
-    --ticketbar-h: 72px;
+    --ticketbar-h: 64px;
   }
 
   .button-small {
