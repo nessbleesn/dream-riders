@@ -4,11 +4,231 @@ document.documentElement.classList.add("js");
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const header = document.querySelector("[data-header]");
-const hero = document.querySelector(".hero");
-const finalSection = document.querySelector(".final-cta");
-const ticketDock = document.querySelector("[data-ticket-dock]");
+const ticketbar = document.querySelector("[data-ticketbar]");
 const heroVideo = document.querySelector(".hero-video");
 const statValues = document.querySelectorAll(".stat-value");
+
+const setupCookieConsent = () => {
+  const consent = document.querySelector(".cookie-consent[data-cookie-consent]");
+  const acceptButton = consent?.querySelector("[data-cookie-accept]");
+  const essentialButton = consent?.querySelector("[data-cookie-essential]");
+  const settingsButtons = document.querySelectorAll("[data-cookie-settings]");
+  const consentKey = "dr_cookie_consent";
+  const consentLifetime = 60 * 60 * 24 * 180;
+
+  if (!consent || !acceptButton || !essentialButton) return;
+
+  const readCookie = () => {
+    const prefix = `${consentKey}=`;
+    const match = document.cookie
+      .split(";")
+      .map((item) => item.trim())
+      .find((item) => item.startsWith(prefix));
+    return match ? decodeURIComponent(match.slice(prefix.length)) : "";
+  };
+
+  const readStoredChoice = () => {
+    const cookieChoice = readCookie();
+    if (cookieChoice) return cookieChoice;
+    try {
+      return window.localStorage.getItem(consentKey) || "";
+    } catch {
+      return "";
+    }
+  };
+
+  const showConsent = (moveFocus = false) => {
+    document.documentElement.dataset.cookieConsentOpen = "true";
+    consent.hidden = false;
+    consent.inert = false;
+    consent.setAttribute("aria-hidden", "false");
+    consent.dataset.state = "visible";
+    consent.classList.remove("is-dismissed");
+    requestAnimationFrame(() => {
+      consent.classList.add("is-visible");
+      if (moveFocus) essentialButton.focus();
+    });
+  };
+
+  const hideConsent = () => {
+    delete document.documentElement.dataset.cookieConsentOpen;
+    consent.classList.remove("is-visible");
+    consent.classList.add("is-dismissed");
+    consent.inert = true;
+    consent.setAttribute("aria-hidden", "true");
+    consent.dataset.state = "dismissed";
+  };
+
+  const saveChoice = (choice) => {
+    const secure = window.location.protocol === "https:" ? "; Secure" : "";
+    document.cookie = `${consentKey}=${encodeURIComponent(choice)}; Max-Age=${consentLifetime}; Path=/; SameSite=Lax${secure}`;
+    try {
+      window.localStorage.setItem(consentKey, choice);
+    } catch {
+      // The first-party consent cookie above remains the source of truth.
+    }
+    document.documentElement.dataset.cookieConsent = choice;
+    hideConsent();
+    window.dispatchEvent(new CustomEvent("dreamriders:cookie-consent", { detail: { choice } }));
+  };
+
+  acceptButton.addEventListener("click", () => saveChoice("accepted"));
+  essentialButton.addEventListener("click", () => saveChoice("necessary"));
+  settingsButtons.forEach((button) => {
+    button.addEventListener("click", () => showConsent(true));
+  });
+  consent.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") return;
+    event.preventDefault();
+    saveChoice("necessary");
+  });
+
+  const storedChoice = readStoredChoice();
+  if (storedChoice) {
+    document.documentElement.dataset.cookieConsent = storedChoice;
+    delete document.documentElement.dataset.cookieConsentOpen;
+    consent.classList.add("is-dismissed");
+    consent.inert = true;
+    consent.setAttribute("aria-hidden", "true");
+    consent.dataset.state = "dismissed";
+  } else {
+    window.setTimeout(() => showConsent(false), reducedMotion ? 0 : 450);
+  }
+};
+
+setupCookieConsent();
+
+const setupKineticBackground = () => {
+  const canvas = document.querySelector("[data-kinetic-bg]");
+  const context = canvas?.getContext("2d");
+  if (!canvas || !context) return;
+
+  let width = 0;
+  let height = 0;
+  let pixelRatio = 1;
+  let animationFrame = 0;
+  let isVisible = !document.hidden;
+  const pointer = { x: 0, y: 0, targetX: 0, targetY: 0 };
+  const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+  const routeY = (x, lane, time, scrollProgress) => {
+    const base = height * (0.17 + lane * 0.225);
+    const amplitude = 20 + lane * 8;
+    const wave = Math.sin((x / Math.max(width, 1)) * Math.PI * (2.1 + lane * 0.34) + time * (0.38 + lane * 0.11) + scrollProgress * Math.PI * 2.5);
+    return base + wave * amplitude + pointer.y * (10 + lane * 2) + pointer.x * (lane % 2 ? 8 : -8);
+  };
+
+  const resize = () => {
+    width = window.innerWidth;
+    height = window.innerHeight;
+    pixelRatio = Math.min(window.devicePixelRatio || 1, 1.5);
+    canvas.width = Math.round(width * pixelRatio);
+    canvas.height = Math.round(height * pixelRatio);
+    canvas.style.width = `${width}px`;
+    canvas.style.height = `${height}px`;
+    context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+    if (reducedMotion) draw(0, false);
+  };
+
+  const draw = (timestamp, keepAnimating = true) => {
+    const time = timestamp * 0.001;
+    const maxScroll = Math.max(document.documentElement.scrollHeight - height, 1);
+    const scrollProgress = Math.min(window.scrollY / maxScroll, 1);
+
+    pointer.x += (pointer.targetX - pointer.x) * 0.045;
+    pointer.y += (pointer.targetY - pointer.y) * 0.045;
+    context.clearRect(0, 0, width, height);
+
+    for (let lane = 0; lane < 4; lane += 1) {
+      context.beginPath();
+      for (let x = -24; x <= width + 24; x += 24) {
+        const y = routeY(x, lane, time, scrollProgress);
+        if (x === -24) context.moveTo(x, y);
+        else context.lineTo(x, y);
+      }
+      context.strokeStyle = `rgba(49, 175, 227, ${0.11 + lane * 0.02})`;
+      context.lineWidth = lane === 1 ? 2 : 1.15;
+      context.stroke();
+    }
+
+    for (let index = 0; index < 12; index += 1) {
+      const lane = index % 4;
+      const speed = 0.018 + lane * 0.004;
+      const phase = (time * speed + index * 0.091 + scrollProgress * (0.2 + lane * 0.04)) % 1;
+      const x = phase * (width + 80) - 40;
+      const y = routeY(x, lane, time, scrollProgress);
+      const radius = index % 3 === 0 ? 4.5 : 2.4;
+
+      context.beginPath();
+      context.moveTo(x - 20, y);
+      context.lineTo(x - 7, y);
+      context.strokeStyle = "rgba(49, 175, 227, 0.28)";
+      context.lineWidth = 1.4;
+      context.stroke();
+
+      context.beginPath();
+      context.arc(x, y, radius, 0, Math.PI * 2);
+      context.fillStyle = index % 3 === 0 ? "rgba(49, 175, 227, 0.72)" : "rgba(118, 207, 243, 0.48)";
+      context.fill();
+    }
+
+    if (keepAnimating && isVisible) animationFrame = requestAnimationFrame(draw);
+  };
+
+  resize();
+  window.addEventListener("resize", resize, { passive: true });
+
+  if (finePointer && !reducedMotion) {
+    window.addEventListener("pointermove", (event) => {
+      pointer.targetX = (event.clientX / Math.max(width, 1) - 0.5) * 2;
+      pointer.targetY = (event.clientY / Math.max(height, 1) - 0.5) * 2;
+    }, { passive: true });
+  }
+
+  if (!reducedMotion) {
+    animationFrame = requestAnimationFrame(draw);
+    document.addEventListener("visibilitychange", () => {
+      isVisible = !document.hidden;
+      cancelAnimationFrame(animationFrame);
+      if (isVisible) animationFrame = requestAnimationFrame(draw);
+    });
+  }
+};
+
+const setupTiltCards = () => {
+  if (reducedMotion || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+
+  document.querySelectorAll("[data-tilt]").forEach((card) => {
+    let frame = 0;
+    card.addEventListener("pointermove", (event) => {
+      const rect = card.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width - 0.5;
+      const y = (event.clientY - rect.top) / rect.height - 0.5;
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        card.style.setProperty("--tilt-x", `${(-y * 4.5).toFixed(2)}deg`);
+        card.style.setProperty("--tilt-y", `${(x * 4.5).toFixed(2)}deg`);
+      });
+    });
+    card.addEventListener("pointerleave", () => {
+      card.style.setProperty("--tilt-x", "0deg");
+      card.style.setProperty("--tilt-y", "0deg");
+    });
+  });
+};
+
+setupKineticBackground();
+setupTiltCards();
+
+const getTrackedTicketUrl = (url) => {
+  const currentUrl = new URL(window.location.href);
+  const ticketUrl = new URL(url);
+  eventData.allowedTrackingParams.forEach((name) => {
+    const value = currentUrl.searchParams.get(name);
+    if (value) ticketUrl.searchParams.set(name, value);
+  });
+  return ticketUrl.toString();
+};
 
 const fillEventData = () => {
   document.querySelectorAll("[data-ticket-price]").forEach((node) => {
@@ -23,20 +243,100 @@ const fillEventData = () => {
   document.querySelectorAll("[data-event-date]").forEach((node) => {
     node.textContent = eventData.dateLabel;
   });
-
-  const currentUrl = new URL(window.location.href);
-  const ticketUrl = new URL(eventData.ticketUrl);
-  eventData.allowedTrackingParams.forEach((name) => {
-    const value = currentUrl.searchParams.get(name);
-    if (value) ticketUrl.searchParams.set(name, value);
+  document.querySelectorAll("[data-event-address]").forEach((node) => {
+    node.textContent = eventData.address.replace(/^Москва,\s*/u, "");
   });
 
   document.querySelectorAll("[data-ticket-link]").forEach((link) => {
-    link.href = ticketUrl.toString();
+    link.href = getTrackedTicketUrl(eventData.ticketUrl);
   });
 };
 
 fillEventData();
+
+const setupTicketHeader = () => {
+  if (!ticketbar) return;
+
+  const dateSelect = ticketbar.querySelector("[data-ticket-date]");
+  const priceNode = ticketbar.querySelector("[data-ticketbar-price]");
+  const statusNode = ticketbar.querySelector("[data-ticketbar-status]");
+  const cta = ticketbar.querySelector("[data-ticketbar-cta]");
+  const dates = Array.isArray(eventData.dates) ? eventData.dates : [];
+  const saleStates = {
+    open: { label: "Продажа открыта", ctaLabel: "Купить билет", disabled: false },
+    limited: { label: "Осталось мало билетов", ctaLabel: "Купить билет", disabled: false },
+    sold_out: { label: "Билеты закончились", ctaLabel: "Билеты закончились", disabled: true },
+    coming_soon: { label: "Продажи скоро", ctaLabel: "Продажи скоро", disabled: true },
+  };
+
+  if (!dateSelect || !priceNode || !statusNode || !cta || dates.length === 0) return;
+
+  dateSelect.replaceChildren(
+    ...dates.map((date) => {
+      const option = document.createElement("option");
+      option.value = date.id;
+      option.textContent = date.label;
+      return option;
+    })
+  );
+
+  const applyDate = (date) => {
+    const saleState = saleStates[date.saleStatus] || saleStates.coming_soon;
+    const ticketUrl = getTrackedTicketUrl(date.ticketUrl);
+
+    priceNode.textContent = formatRubles(date.price);
+    statusNode.textContent = saleState.label;
+    ticketbar.dataset.saleStatus = date.saleStatus;
+    cta.textContent = saleState.ctaLabel;
+
+    document.querySelectorAll("[data-ticket-price]").forEach((node) => {
+      node.textContent = formatRubles(date.price);
+    });
+    document.querySelectorAll("[data-event-date]").forEach((node) => {
+      node.textContent = date.compactLabel;
+    });
+    document.querySelectorAll("[data-ticket-link], [data-ticketbar-cta]").forEach((link) => {
+      link.setAttribute("aria-disabled", String(saleState.disabled));
+      if (saleState.disabled) {
+        link.removeAttribute("href");
+        link.setAttribute("tabindex", "-1");
+      } else {
+        link.href = ticketUrl;
+        link.removeAttribute("tabindex");
+      }
+    });
+  };
+
+  const defaultDate = dates.find((date) => date.id === eventData.defaultDateId) || dates[0];
+  dateSelect.value = defaultDate.id;
+  applyDate(defaultDate);
+
+  dateSelect.addEventListener("change", () => {
+    const selectedDate = dates.find((date) => date.id === dateSelect.value) || defaultDate;
+    applyDate(selectedDate);
+  });
+};
+
+const setupHeaderMetrics = () => {
+  if (!header || !ticketbar) return;
+
+  const sync = () => {
+    document.documentElement.style.setProperty("--topbar-h", `${Math.ceil(header.getBoundingClientRect().height)}px`);
+    document.documentElement.style.setProperty("--ticketbar-h", `${Math.ceil(ticketbar.getBoundingClientRect().height)}px`);
+  };
+
+  sync();
+  if ("ResizeObserver" in window) {
+    const resizeObserver = new ResizeObserver(sync);
+    resizeObserver.observe(header);
+    resizeObserver.observe(ticketbar);
+  } else {
+    window.addEventListener("resize", sync, { passive: true });
+  }
+};
+
+setupTicketHeader();
+setupHeaderMetrics();
 
 const setupSalesMeter = () => {
   const meter = document.querySelector("[data-sales-meter]");
@@ -78,19 +378,6 @@ const setupSalesMeter = () => {
 
 setupSalesMeter();
 
-const updateStickyUi = () => {
-  header?.classList.toggle("is-scrolled", window.scrollY > 18);
-  if (!ticketDock || !hero) return;
-
-  const pastHero = window.scrollY > hero.offsetHeight * 0.72;
-  const beforeFinal = !finalSection || window.scrollY + window.innerHeight < finalSection.offsetTop + 120;
-  ticketDock.classList.toggle("is-visible", pastHero && beforeFinal);
-};
-
-updateStickyUi();
-window.addEventListener("scroll", updateStickyUi, { passive: true });
-window.addEventListener("resize", updateStickyUi);
-
 if (heroVideo) {
   const syncHeroVideo = (isInView = true) => {
     if (reducedMotion || document.hidden || !isInView) {
@@ -122,7 +409,6 @@ const setupScrollMotion = () => {
     [".sales-meter-heading > *", "up", 100],
     [".sales-meter-panel > *", "up", 90],
     [".section-intro > *", "up", 100],
-    [".proof-card", "up", 110],
     [".boomerang-visual", "left", 0],
     [".boomerang-copy > .section-label, .boomerang-copy > h2, .boomerang-copy > .boomerang-lead", "right", 90],
     [".ride-stats > div", "right", 100],
@@ -130,14 +416,11 @@ const setupScrollMotion = () => {
     [".ride-slider-viewport", "scale", 0],
     [".ride-slider-tabs > *, .ride-slider-controls > *", "up", 70],
     [".tickets-heading > *", "up", 100],
-    [".ticket-brand, .ticket-date, .ticket-access, .ticket-price", "up", 90],
+    [".ticket-presenter, .ticket-brand strong, .ticket-meta > *", "up", 90],
     [".ticket-stub > *", "right", 70],
-    [".visit-heading > *", "up", 100],
-    [".visit-card", "up", 100],
+    [".location-strip > *", "up", 90],
     [".faq-heading > *", "up", 90],
     [".faq-list details", "up", 90],
-    [".final-copy > .section-label, .final-copy > h2, .final-copy > p, .footer-cta-wrap", "up", 100],
-    [".footer > *", "up", 90],
   ];
 
   motionGroups.forEach(([selector, direction, stagger]) => {

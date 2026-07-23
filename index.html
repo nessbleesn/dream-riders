@@ -14,12 +14,12 @@
     <meta property="og:locale" content="ru_RU" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="assets/skazka-logo-cropped.png" type="image/png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;700;800&family=Oswald:wght@400&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="preload" href="assets/fonts/bebas-neue-pro-bold.otf" as="font" type="font/otf" crossorigin />
+    <link rel="stylesheet" href="design-system.css" />
+    <link rel="stylesheet" href="styles.css?v=20260723-22" />
   </head>
   <body>
+    <canvas class="kinetic-bg" data-kinetic-bg aria-hidden="true"></canvas>
     <a class="skip-link" href="#content">К содержанию</a>
 
     <header class="topbar" data-header>
@@ -31,29 +31,52 @@
         <span>Новая экстрим-зона</span>
       </a>
       <nav class="topbar-actions" aria-label="Основные ссылки">
-        <a class="topbar-phone" href="tel:+74951336556">+7 (495) 133-65-56</a>
+        <a class="topbar-phone" href="tel:+74951336556">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.92Z" />
+          </svg>
+          <span>+7 (495) 133-65-56</span>
+        </a>
         <a class="button button-small button-outline" href="https://parkskazka.com/" target="_blank" rel="noopener noreferrer">Сайт парка</a>
-        <a class="button button-small button-primary" data-ticket-link href="https://price.parkskazka.com/" target="_blank" rel="noopener noreferrer">Купить билет</a>
       </nav>
     </header>
 
+    <aside class="ticketbar" data-ticketbar aria-label="Быстрая покупка билета">
+      <div class="ticketbar-inner section-shell">
+        <div class="ticketbar-date">
+          <label for="ticket-date">Дата катания</label>
+          <select class="ticketbar-select" id="ticket-date" data-ticket-date aria-describedby="ticketbar-status">
+            <option value="2026-08-01">1 августа 2026</option>
+          </select>
+        </div>
+        <div class="ticketbar-price" aria-live="polite">
+          <span>Билет на весь парк</span>
+          <strong data-ticketbar-price>2 900 ₽</strong>
+        </div>
+        <p class="ticketbar-status" id="ticketbar-status" data-ticketbar-status aria-live="polite">
+          <span aria-hidden="true"></span>Продажа открыта
+        </p>
+        <a class="button button-small button-primary ticketbar-cta" data-ticketbar-cta href="https://price.parkskazka.com/" target="_blank" rel="noopener noreferrer">Купить билет</a>
+      </div>
+    </aside>
+
     <main id="content">
       <section class="hero" id="top" aria-labelledby="hero-title">
-        <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/hero-dream-1-poster.jpg" aria-label="Видео аттракционов Dream Riders">
-          <source src="assets/hero-dream-1.mp4" type="video/mp4" />
+        <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/hero-dr-1-poster.jpg" aria-label="Видео аттракционов Dream Riders">
+          <source src="assets/hero-dr-1.mp4" type="video/mp4" />
         </video>
 
         <div class="hero-copy">
-          <p class="eyebrow hero-load hero-load-1">Парк Сказка · Москва</p>
-          <h1 id="hero-title" class="hero-load hero-load-2">Dream Riders</h1>
-          <p class="hero-subtitle hero-load hero-load-3">Открытие новой экстрим-зоны</p>
-          <div class="hero-event hero-load hero-load-4" aria-label="1 августа 2026 года, билет 2 900 рублей">
-            <span><b>01 августа</b> только один день</span>
-            <span><b data-ticket-price>2 900 ₽</b> весь парк</span>
+          <h1 id="hero-title" class="hero-load hero-load-1" aria-label="Dream Riders">
+            <span aria-hidden="true">Dream</span>
+            <span aria-hidden="true">Riders</span>
+          </h1>
+          <p class="hero-subtitle hero-load hero-load-2">Дрим Райдерс</p>
+          <p class="hero-tagline hero-load hero-load-3">Открытие новой экстрим-зоны — ваш день на максимуме</p>
+          <div class="hero-cta-group hero-load hero-load-4">
+            <a class="button button-primary" data-ticket-link href="https://price.parkskazka.com/" target="_blank" rel="noopener noreferrer">Купить билет</a>
+            <p>Только онлайн · количество ограничено</p>
           </div>
-          <p class="hero-lead hero-load hero-load-4">Премьера «Бумеранга», три экстремальных аттракциона и дневные катания по всему парку</p>
-          <a class="button button-primary button-hero hero-load hero-load-4" data-ticket-link href="https://price.parkskazka.com/" target="_blank" rel="noopener noreferrer">Купить билет</a>
-          <p class="hero-note hero-load hero-load-4">Только онлайн · количество ограничено</p>
         </div>
 
         <a class="hero-scroll" href="#sales" aria-label="Узнать подробнее"><span></span>Листайте</a>
@@ -94,49 +117,53 @@
             <span class="sales-progress-marker" data-sales-marker aria-hidden="true"><b data-sales-percent>0%</b></span>
           </div>
           <div class="sales-meter-footer">
-            <p><b>Билеты продаются только онлайн</b><span>Количество ограничено конфигурацией события</span></p>
+            <p><b>Билеты продаются только онлайн</b></p>
             <a class="button button-primary" data-ticket-link href="https://price.parkskazka.com/" target="_blank" rel="noopener noreferrer">Купить билет</a>
           </div>
         </div>
       </section>
 
-      <section class="proof section-shell" id="proof" aria-labelledby="proof-title">
-        <div class="section-intro reveal">
-          <p class="section-label">Один день на максимуме</p>
-          <h2 id="proof-title">Билет открывает<br />весь парк</h2>
-          <p>Не отдельный вход в зону, а полноценный день в Парке Сказка с премьерой Dream Riders</p>
+      <section class="tickets" id="tickets" aria-labelledby="tickets-title">
+        <div class="tickets-heading reveal">
+          <p class="section-label">Пропуск в Dream Riders</p>
+          <h2 id="tickets-title">Один билет<br />Весь парк</h2>
+          <p>Специальное предложение действует только 1 августа и продаётся исключительно онлайн</p>
         </div>
-        <div class="proof-grid">
-          <article class="proof-card reveal">
-            <span>01</span>
-            <strong data-ticket-price>2 900 ₽</strong>
-            <h3>Специальная цена</h3>
-            <p>Обычный билет выходного дня стоит <s data-regular-price>5 500 ₽</s></p>
-          </article>
-          <article class="proof-card proof-card-blue reveal">
-            <span>02</span>
-            <strong data-savings>2 600 ₽</strong>
-            <h3>Ваша выгода</h3>
-            <p>Больше впечатлений за меньшую цену только в день открытия</p>
-          </article>
-          <article class="proof-card proof-card-dark reveal">
-            <span>03</span>
-            <strong>100%</strong>
-            <h3>Продажа онлайн</h3>
-            <p>Эксклюзивно на сайте, количество билетов ограничено</p>
-          </article>
-        </div>
+        <article class="event-ticket reveal" aria-label="Дневной билет Dream Riders на 1 августа">
+          <div class="ticket-main">
+            <div class="ticket-brand">
+              <div class="ticket-presenter">
+                <img src="assets/skazka-logo-cropped.png" width="180" height="67" loading="lazy" decoding="async" alt="" aria-hidden="true" />
+                <span>Парк Сказка представляет</span>
+              </div>
+              <strong aria-label="Dream Riders"><span aria-hidden="true">Dream</span><span aria-hidden="true">Riders</span></strong>
+            </div>
+            <div class="ticket-meta">
+              <div class="ticket-date"><span>Дата события</span><strong data-event-date>01·08·2026</strong></div>
+              <div class="ticket-access"><span>Доступ по билету</span><strong>Весь парк</strong></div>
+            </div>
+          </div>
+          <div class="ticket-stub">
+            <span class="ticket-status">Дневной билет</span>
+            <div class="ticket-price"><span>Цена только онлайн</span><strong data-ticket-price>2 900 ₽</strong></div>
+            <div class="ticket-value">
+              <p><span>Обычная цена</span><s data-regular-price>5 500 ₽</s></p>
+              <p><span>Ваша выгода</span><b data-savings>2 600 ₽</b></p>
+            </div>
+            <a class="button button-primary" data-ticket-link href="https://price.parkskazka.com/" target="_blank" rel="noopener noreferrer">Купить билет</a>
+            <small>1 августа · количество ограничено</small>
+          </div>
+        </article>
       </section>
 
       <section class="boomerang" id="boomerang" aria-labelledby="boomerang-title">
         <figure class="boomerang-visual reveal">
           <img src="assets/rides/boomerang-01.webp" width="1800" height="1350" loading="lazy" decoding="async" alt="Поезд аттракциона Бумеранг проходит петлю" />
-          <figcaption>Главная премьера 1 августа</figcaption>
         </figure>
         <div class="boomerang-copy reveal">
           <p class="section-label">Новый аттракцион</p>
           <h2 id="boomerang-title">Бумеранг</h2>
-          <p class="boomerang-lead">Вверх, в петлю и обратно — маршрут, который меняет направление, но не сбавляет темп</p>
+          <p class="boomerang-lead">Разгон до 85,3 км/ч, подъём на 37 метров и полный оборот на 360°</p>
           <dl class="ride-stats">
             <div><dt><span class="stat-value" data-count="360" data-decimals="0">360</span>°</dt><dd>мёртвая петля</dd></div>
             <div><dt><span class="stat-value" data-count="37" data-decimals="0">37</span> м</dt><dd>высота подъёма</dd></div>
@@ -147,44 +174,43 @@
 
       <section class="experience section-shell" aria-labelledby="experience-title">
         <div class="experience-heading reveal">
-          <p class="section-label">Три аттракциона</p>
-          <h2 id="experience-title">Выберите<br />свой градус</h2>
-          <p>Листайте фотографии, переключайте аттракционы и решайте, с чего начнётся ваш день</p>
+          <p class="section-label">Экстрим-зона</p>
+          <h2 id="experience-title">Три аттракциона<br />Один день</h2>
         </div>
 
         <div class="ride-slider reveal" data-ride-slider tabindex="0" aria-label="Фотографии аттракционов Dream Riders" aria-roledescription="карусель">
           <div class="ride-slider-viewport" aria-live="polite">
             <article class="ride-slide is-active" data-ride="boomerang" aria-hidden="false">
               <img src="assets/rides/boomerang-01.webp" width="1800" height="1350" alt="Общий вид трассы Бумеранга с петлёй" />
-              <div class="ride-slide-copy"><span>01 · премьера</span><h3>Бумеранг</h3><p>360° · 37 м · 85,3 км/ч</p></div>
+              <div class="ride-slide-copy"><h3>Бумеранг</h3><p>Скорость 85,3 км/ч</p></div>
             </article>
             <article class="ride-slide" data-ride="boomerang" aria-hidden="true">
               <img src="assets/rides/boomerang-02.webp" width="1800" height="888" loading="lazy" decoding="async" alt="Бирюзовая трасса Бумеранга на фоне облаков" />
-              <div class="ride-slide-copy"><span>02 · траектория</span><h3>Бумеранг</h3><p>Экстремальный маршрут туда и обратно</p></div>
+              <div class="ride-slide-copy"><h3>Бумеранг</h3><p>Оборот на 360° и мёртвая петля</p></div>
             </article>
             <article class="ride-slide" data-ride="vortex" aria-hidden="true">
               <img src="assets/rides/vortex-01.webp" width="1800" height="811" loading="lazy" decoding="async" alt="Зелёно-фиолетовая трасса аттракциона Вихрь" />
-              <div class="ride-slide-copy"><span>03 · виражи</span><h3>Вихрь</h3><p>Скорость 47 км/ч</p></div>
+              <div class="ride-slide-copy"><h3>Вихрь</h3><p>Скорость 47 км/ч</p></div>
             </article>
             <article class="ride-slide" data-ride="vortex" aria-hidden="true">
               <img src="assets/rides/vortex-02.webp" width="1800" height="1068" loading="lazy" decoding="async" alt="Гондола Вихря проходит по зелёной трассе" />
-              <div class="ride-slide-copy"><span>04 · в движении</span><h3>Вихрь</h3><p>Манёвры без паузы на передышку</p></div>
+              <div class="ride-slide-copy"><h3>Вихрь</h3><p>Манёвры без паузы на передышку</p></div>
             </article>
             <article class="ride-slide" data-ride="vortex" aria-hidden="true">
               <img src="assets/rides/vortex-03.webp" width="1800" height="907" loading="lazy" decoding="async" alt="Гондола Вихря среди пересекающихся участков трассы" />
-              <div class="ride-slide-copy"><span>05 · над землёй</span><h3>Вихрь</h3><p>Динамичная трасса и резкие смены направления</p></div>
+              <div class="ride-slide-copy"><h3>Вихрь</h3><p>Динамичная трасса и резкие смены направления</p></div>
             </article>
             <article class="ride-slide" data-ride="smerch" aria-hidden="true">
               <img src="assets/rides/smerch-01.webp" width="1800" height="1201" loading="lazy" decoding="async" alt="Аттракцион Смерч поднят над деревьями" />
-              <div class="ride-slide-copy"><span>06 · выше парка</span><h3>Смерч</h3><p>Высота 34 метра</p></div>
+              <div class="ride-slide-copy"><h3>Смерч</h3><p>Высота 34 метра</p></div>
             </article>
             <article class="ride-slide" data-ride="smerch" aria-hidden="true">
               <img src="assets/rides/smerch-02.webp" width="1800" height="1200" loading="lazy" decoding="async" alt="Оранжевые кабины Смерча крупным планом" />
-              <div class="ride-slide-copy"><span>07 · вращение</span><h3>Смерч</h3><p>Панорама парка превращается в полёт</p></div>
+              <div class="ride-slide-copy"><h3>Смерч</h3><p>Панорама парка превращается в полёт</p></div>
             </article>
             <article class="ride-slide" data-ride="smerch" aria-hidden="true">
               <img src="assets/rides/smerch-03.webp" width="1800" height="1200" loading="lazy" decoding="async" alt="Вид снизу на вращающиеся модули Смерча" />
-              <div class="ride-slide-copy"><span>08 · максимум</span><h3>Смерч</h3><p>Финальный уровень для самых смелых</p></div>
+              <div class="ride-slide-copy"><h3>Смерч</h3><p>Мощное вращение высоко над парком</p></div>
             </article>
           </div>
           <div class="ride-slider-ui">
@@ -203,45 +229,18 @@
         </div>
       </section>
 
-      <section class="tickets" id="tickets" aria-labelledby="tickets-title">
-        <div class="tickets-heading reveal">
-          <p class="section-label">Пропуск в Dream Riders</p>
-          <h2 id="tickets-title">Один билет<br />Весь парк</h2>
-          <p>Специальное предложение действует только 1 августа и продаётся исключительно онлайн</p>
+      <aside class="location-strip section-shell reveal" aria-label="Адрес Парка Сказка">
+        <div>
+          <span>Парк Сказка · Москва</span>
+          <strong data-event-address>ул. Крылатская, 18</strong>
         </div>
-        <article class="event-ticket reveal">
-          <div class="ticket-main">
-            <div class="ticket-brand"><span>Park Skazka presents</span><strong>Dream Riders</strong></div>
-            <div class="ticket-date"><span>Дата</span><strong data-event-date>01·08·2026</strong></div>
-            <div class="ticket-access"><span>Доступ</span><strong>Весь парк</strong></div>
-            <div class="ticket-price"><span>Цена онлайн</span><strong data-ticket-price>2 900 ₽</strong></div>
-          </div>
-          <div class="ticket-stub">
-            <span class="ticket-status">Продажа открыта</span>
-            <p>Обычно <s data-regular-price>5 500 ₽</s></p>
-            <p>Выгода <b data-savings>2 600 ₽</b></p>
-            <a class="button button-primary" data-ticket-link href="https://price.parkskazka.com/" target="_blank" rel="noopener noreferrer">Купить билет</a>
-            <small>Количество ограничено</small>
-          </div>
-        </article>
-      </section>
-
-      <section class="visit section-shell" aria-labelledby="visit-title">
-        <div class="visit-heading reveal">
-          <p class="section-label">Спланируйте день</p>
-          <h2 id="visit-title">Встречаемся<br />в Парке Сказка</h2>
-        </div>
-        <div class="visit-grid">
-          <article class="visit-card reveal"><span>Когда</span><strong>1 августа 2026</strong><p>Специальная цена действует только в день открытия</p></article>
-          <article class="visit-card reveal"><span>Формат</span><strong>Дневные катания</strong><p>Dream Riders и весь парк по одному билету</p></article>
-          <article class="visit-card reveal"><span>Где</span><strong>Крылатская, 18</strong><p>Москва, Парк Сказка</p><a href="https://yandex.ru/maps/?text=Москва%2C%20ул.%20Крылатская%2C%2018" target="_blank" rel="noopener noreferrer">Построить маршрут ↗</a></article>
-        </div>
-      </section>
+        <a class="button button-outline" href="https://yandex.ru/maps/?text=Москва%2C%20ул.%20Крылатская%2C%2018" target="_blank" rel="noopener noreferrer">Построить маршрут ↗</a>
+      </aside>
 
       <section class="faq section-shell" aria-labelledby="faq-title">
         <div class="faq-heading reveal">
           <p class="section-label">Коротко о главном</p>
-          <h2 id="faq-title">Ответы перед стартом</h2>
+          <h2 id="faq-title">FAQ</h2>
         </div>
         <div class="faq-list reveal">
           <details><summary>Что входит в билет</summary><p>Дневные катания в Парке Сказка, доступ ко всему парку и новой экстрим-зоне Dream Riders</p></details>
@@ -252,45 +251,46 @@
 
     </main>
 
-    <footer class="organic-footer">
-      <svg class="organic-footer-edge organic-footer-edge-desktop" viewBox="0 0 1600 270" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-        <path d="M-20 214 C165 248 256 76 438 112 C594 143 657 251 824 211 C1016 165 1068 28 1246 72 C1390 108 1481 211 1620 157 L1620 290 L-20 290 Z" fill="currentColor" />
-      </svg>
-      <svg class="organic-footer-edge organic-footer-edge-mobile" viewBox="0 0 390 230" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-        <path d="M-12 174 C58 224 116 72 202 99 C286 125 316 208 402 137 L402 248 L-12 248 Z" fill="currentColor" />
-      </svg>
-
-      <section class="final-cta" aria-labelledby="final-title">
-        <img src="assets/final-cta-park-1920.webp" srcset="assets/final-cta-park-960.webp 960w, assets/final-cta-park-1920.webp 1920w" sizes="100vw" width="1920" height="1280" loading="lazy" decoding="async" alt="Панорама Парка Сказка и Москвы с высоты" />
-        <div class="final-overlay" aria-hidden="true"></div>
-        <div class="final-copy reveal">
-          <p class="section-label">1 августа · Парк Сказка</p>
-          <h2 id="final-title">Ваш день<br />на максимуме</h2>
-          <p><strong data-ticket-price>2 900 ₽</strong> вместо <s data-regular-price>5 500 ₽</s></p>
-          <div class="footer-cta-wrap">
-            <span class="footer-cta-note">Только онлайн</span>
-            <svg class="footer-cta-arrow footer-cta-arrow-desktop" viewBox="0 0 170 94" aria-hidden="true" focusable="false">
-              <path pathLength="1" d="M12 18 C34 43 58 57 90 52 C116 48 136 58 151 72" />
-              <path pathLength="1" d="M151 72 C143 64 134 61 125 62" />
-              <path pathLength="1" d="M151 72 C143 73 136 77 131 84" />
-            </svg>
-            <svg class="footer-cta-arrow footer-cta-arrow-mobile" viewBox="0 0 140 82" aria-hidden="true" focusable="false">
-              <path pathLength="1" d="M10 14 C31 9 44 30 63 39 C83 48 102 45 123 62" />
-              <path pathLength="1" d="M123 62 C116 54 108 51 100 52" />
-              <path pathLength="1" d="M123 62 C115 62 108 66 104 73" />
-            </svg>
-            <a class="button button-primary" data-ticket-link href="https://price.parkskazka.com/" target="_blank" rel="noopener noreferrer">Купить билет</a>
-          </div>
-        </div>
-      </section>
-
+    <footer class="site-footer">
       <div class="footer">
-        <div><strong>Dream Riders</strong><span>Новая экстрим-зона</span></div>
-        <p>Парк Сказка · Москва, ул. Крылатская, 18</p>
-        <div class="footer-links"><a href="https://parkskazka.com/" target="_blank" rel="noopener noreferrer">Сайт парка</a><a href="tel:+74951336556">+7 (495) 133-65-56</a></div>
+        <div class="footer-brand"><strong>Dream Riders</strong><span>Дрим Райдерс</span></div>
+        <p class="footer-address">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 21s6-5.7 6-11a6 6 0 1 0-12 0c0 5.3 6 11 6 11Z" />
+            <circle cx="12" cy="10" r="2.25" />
+          </svg>
+          <span>Парк Сказка · Москва, ул. Крылатская, 18</span>
+        </p>
+        <div class="footer-links">
+          <button class="footer-cookie-settings" type="button" data-cookie-settings>Настройки cookie</button>
+          <a href="https://parkskazka.com/" target="_blank" rel="noopener noreferrer">Сайт парка</a>
+          <a href="tel:+74951336556">+7 (495) 133-65-56</a>
+        </div>
       </div>
     </footer>
 
-    <script type="module" src="script.js"></script>
+    <section class="cookie-consent" data-cookie-consent role="dialog" aria-labelledby="cookie-title" aria-describedby="cookie-description" aria-hidden="true" inert hidden>
+      <div class="cookie-consent-copy">
+        <span class="cookie-consent-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" focusable="false">
+            <path d="M26.5 16.3A10.8 10.8 0 1 1 15.7 5.5c.2 3.3 2.8 5.9 6.1 6.1a6.1 6.1 0 0 0 4.7 4.7Z" />
+            <circle cx="11.5" cy="16.8" r="1.25" />
+            <circle cx="17" cy="22" r="1.1" />
+            <circle cx="9.5" cy="22.8" r=".8" />
+          </svg>
+        </span>
+        <div>
+          <p class="section-label">Ваш выбор</p>
+          <h2 id="cookie-title">Использование cookie</h2>
+          <p id="cookie-description">Cookie помогают сайту запоминать ваш выбор и работать корректно. Необходимые cookie используются всегда.</p>
+        </div>
+      </div>
+      <div class="cookie-consent-actions">
+        <button class="button button-outline" type="button" data-cookie-essential>Только необходимые</button>
+        <button class="button button-primary" type="button" data-cookie-accept>Принять</button>
+      </div>
+    </section>
+
+    <script type="module" src="script.js?v=20260723-22"></script>
   </body>
 </html>
