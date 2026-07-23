@@ -4,7 +4,7 @@ const primaryDate = {
   compactLabel: "01·08·2026",
   startsAt: "2026-08-01T10:00:00+03:00",
   price: 2900,
-  ticketUrl: "https://price.parkskazka.com/",
+  ticketUrl: "https://pay.parkskazka.com/goods/13166586",
   saleStatus: "open",
 };
 
@@ -18,6 +18,8 @@ export const eventData = {
   regularPrice: 5500,
   sold: 0,
   total: 1000,
+  salesEndpoint: "",
+  salesRefreshMs: 60000,
   ticketUrl: primaryDate.ticketUrl,
   saleStatus: primaryDate.saleStatus,
   dates: [primaryDate],

@@ -247,9 +247,6 @@ const fillEventData = () => {
   document.querySelectorAll("[data-regular-price]").forEach((node) => {
     node.textContent = formatRubles(eventData.regularPrice);
   });
-  document.querySelectorAll("[data-savings]").forEach((node) => {
-    node.textContent = formatRubles(eventData.regularPrice - eventData.price);
-  });
   document.querySelectorAll("[data-event-date]").forEach((node) => {
     node.textContent = eventData.dateLabel;
   });
@@ -267,7 +264,7 @@ fillEventData();
 const setupTicketHeader = () => {
   if (!ticketbar) return;
 
-  const dateSelect = ticketbar.querySelector("[data-ticket-date]");
+  const dateNode = ticketbar.querySelector("[data-ticket-date]");
   const priceNode = ticketbar.querySelector("[data-ticketbar-price]");
   const statusNode = ticketbar.querySelector("[data-ticketbar-status]");
   const cta = ticketbar.querySelector("[data-ticketbar-cta]");
@@ -279,16 +276,7 @@ const setupTicketHeader = () => {
     coming_soon: { label: "Продажи скоро", ctaLabel: "Продажи скоро", disabled: true },
   };
 
-  if (!dateSelect || !priceNode || !statusNode || !cta || dates.length === 0) return;
-
-  dateSelect.replaceChildren(
-    ...dates.map((date) => {
-      const option = document.createElement("option");
-      option.value = date.id;
-      option.textContent = date.label;
-      return option;
-    })
-  );
+  if (!dateNode || !priceNode || !statusNode || !cta || dates.length === 0) return;
 
   const applyDate = (date) => {
     const saleState = saleStates[date.saleStatus] || saleStates.coming_soon;
@@ -318,13 +306,9 @@ const setupTicketHeader = () => {
   };
 
   const defaultDate = dates.find((date) => date.id === eventData.defaultDateId) || dates[0];
-  dateSelect.value = defaultDate.id;
+  dateNode.textContent = defaultDate.label;
+  dateNode.setAttribute("datetime", defaultDate.id);
   applyDate(defaultDate);
-
-  dateSelect.addEventListener("change", () => {
-    const selectedDate = dates.find((date) => date.id === dateSelect.value) || defaultDate;
-    applyDate(selectedDate);
-  });
 };
 
 const setupHeaderMetrics = () => {
@@ -352,23 +336,28 @@ const setupSalesMeter = () => {
   const meter = document.querySelector("[data-sales-meter]");
   if (!meter) return;
 
-  const total = Math.max(0, Number(eventData.total) || 0);
-  const sold = Math.min(total, Math.max(0, Number(eventData.sold) || 0));
-  const exactPercent = total > 0 ? (sold / total) * 100 : 0;
-  const roundedPercent = exactPercent < 10 ? Math.round(exactPercent * 10) / 10 : Math.round(exactPercent);
-  const percentLabel = `${String(roundedPercent).replace(".", ",")}%`;
-  const soldLabel = new Intl.NumberFormat("ru-RU").format(sold);
-  const totalLabel = new Intl.NumberFormat("ru-RU").format(total);
   const panel = meter.querySelector(".sales-meter-panel");
   const progress = meter.querySelector("[data-sales-progress]");
 
-  meter.querySelectorAll("[data-sales-percent]").forEach((node) => {
-    node.textContent = percentLabel;
-  });
-  panel?.style.setProperty("--sales-ratio", String(exactPercent / 100));
-  panel?.style.setProperty("--sales-position", `${exactPercent}%`);
-  progress?.setAttribute("aria-valuenow", String(roundedPercent));
-  progress?.setAttribute("aria-valuetext", sold === 0 ? "Продажи ещё не начались" : `Продано ${soldLabel} из ${totalLabel} билетов`);
+  const render = (sales) => {
+    const total = Math.max(0, Number(sales.total) || 0);
+    const sold = Math.min(total, Math.max(0, Number(sales.sold) || 0));
+    const exactPercent = total > 0 ? (sold / total) * 100 : 0;
+    const roundedPercent = exactPercent < 10 ? Math.round(exactPercent * 10) / 10 : Math.round(exactPercent);
+    const percentLabel = `${String(roundedPercent).replace(".", ",")}%`;
+    const soldLabel = new Intl.NumberFormat("ru-RU").format(sold);
+    const totalLabel = new Intl.NumberFormat("ru-RU").format(total);
+
+    meter.querySelectorAll("[data-sales-percent]").forEach((node) => {
+      node.textContent = percentLabel;
+    });
+    panel?.style.setProperty("--sales-ratio", String(exactPercent / 100));
+    panel?.style.setProperty("--sales-position", `${exactPercent}%`);
+    progress?.setAttribute("aria-valuenow", String(roundedPercent));
+    progress?.setAttribute("aria-valuetext", sold === 0 ? "Продажи ещё не начались" : `Продано ${soldLabel} из ${totalLabel} билетов`);
+  };
+
+  render({ sold: eventData.sold, total: eventData.total });
 
   const fill = () => panel?.classList.add("is-filled");
   if (reducedMotion || !("IntersectionObserver" in window)) {
@@ -383,6 +372,30 @@ const setupSalesMeter = () => {
       { threshold: 0.45 }
     );
     progressObserver.observe(meter);
+  }
+
+  const refreshSales = async () => {
+    if (!eventData.salesEndpoint) return;
+
+    try {
+      const response = await fetch(new URL(eventData.salesEndpoint, window.location.href), {
+        cache: "no-store",
+        credentials: "omit",
+        headers: { Accept: "application/json" },
+      });
+      if (!response.ok) return;
+
+      const sales = await response.json();
+      if (!Number.isFinite(Number(sales?.sold)) || !Number.isFinite(Number(sales?.total))) return;
+      render(sales);
+    } catch {
+      // Keep the last confirmed values from event-config.js when the sales source is unavailable.
+    }
+  };
+
+  refreshSales();
+  if (eventData.salesEndpoint && Number(eventData.salesRefreshMs) > 0) {
+    window.setInterval(refreshSales, Number(eventData.salesRefreshMs));
   }
 };
 

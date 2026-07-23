@@ -205,7 +205,7 @@ h3,
   align-items: center;
 }
 
-.ticketbar-date label {
+.ticketbar-date-label {
   color: var(--color-text-muted);
   font-size: 0.64rem;
   font-weight: 800;
@@ -214,18 +214,12 @@ h3,
   text-transform: uppercase;
 }
 
-.ticketbar-select {
-  width: 100%;
-  min-height: var(--control-min-h);
-  padding: 0.6rem 2.2rem 0.6rem 0.8rem;
-  border: 1px solid rgba(18, 56, 79, 0.22);
-  border-radius: 0.75rem;
+.ticketbar-date-value {
+  display: block;
   color: var(--color-text-strong);
-  background-color: rgba(255, 255, 255, 0.84);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  font: 800 0.76rem/1.2 var(--body);
-  cursor: pointer;
+  font: 800 0.82rem/1.2 var(--body);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
 }
 
 .ticketbar-price {
@@ -1136,8 +1130,8 @@ h3,
 }
 
 .ticket-presenter span,
-.ticket-date span,
-.ticket-access span,
+.ticket-date > span,
+.ticket-access > span,
 .ticket-price span {
   display: block;
   color: var(--muted);
@@ -1171,8 +1165,8 @@ h3,
   border-top: 1px solid rgba(18, 56, 79, 0.16);
 }
 
-.ticket-date span,
-.ticket-access span,
+.ticket-date > span,
+.ticket-access > span,
 .ticket-price span {
   margin-bottom: 0.5rem;
 }
@@ -1181,6 +1175,12 @@ h3,
 .ticket-access strong {
   font-size: clamp(2.25rem, 4vw, 3.6rem);
   line-height: 1;
+}
+
+.ticket-access strong {
+  max-width: 15ch;
+  font-size: clamp(1.75rem, 2.8vw, 2.65rem);
+  line-height: 0.98;
 }
 
 .ticket-price strong {
@@ -1256,17 +1256,15 @@ h3,
   text-transform: uppercase;
 }
 
-.ticket-value s,
-.ticket-value b {
+.ticket-value s {
   color: var(--ink);
   font-family: var(--display);
-  font-size: 1.55rem;
+  font-size: clamp(2rem, 3vw, 2.65rem);
   font-weight: 700;
   letter-spacing: 0.02em;
-}
-
-.ticket-value s {
-  color: var(--muted);
+  line-height: 0.9;
+  text-decoration-color: var(--blue-strong);
+  text-decoration-thickness: 0.16rem;
 }
 
 .ticket-stub .button {
@@ -1383,6 +1381,19 @@ h3,
   max-width: 46rem;
   margin: -0.4rem 0 1.5rem;
   color: var(--muted);
+}
+
+.faq details p a {
+  color: var(--color-text-strong);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--blue-strong);
+  text-decoration-thickness: 0.12em;
+  text-underline-offset: 0.2em;
+}
+
+.faq details p a:hover {
+  color: var(--blue-strong);
 }
 
 .site-footer {
@@ -1667,7 +1678,7 @@ html[data-cookie-consent-open="true"] .cookie-consent {
     min-width: 0;
   }
 
-  .ticketbar-date label {
+  .ticketbar-date-label {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -1678,10 +1689,10 @@ html[data-cookie-consent-open="true"] .cookie-consent {
     border: 0;
   }
 
-  .ticketbar-select {
-    min-width: 0;
-    padding-inline: 0.65rem 1.6rem;
-    font-size: 0.67rem;
+  .ticketbar-date-value {
+    overflow: hidden;
+    font-size: 0.7rem;
+    text-overflow: ellipsis;
   }
 
   .ticketbar-price {
@@ -1998,6 +2009,11 @@ html[data-cookie-consent-open="true"] .cookie-consent {
   .ticket-date strong,
   .ticket-access strong {
     font-size: 2.6rem;
+  }
+
+  .ticket-access strong {
+    max-width: 18ch;
+    font-size: clamp(1.8rem, 9vw, 2.35rem);
   }
 
   .ticket-price strong {

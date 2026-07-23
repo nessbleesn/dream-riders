@@ -3,20 +3,84 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Dream Riders · Открытие экстрим-зоны 1 августа в Парке Сказка</title>
-    <meta name="description" content="Только 1 августа: весь Парк Сказка и открытие экстрим-зоны Dream Riders по билету за 2 900 ₽ вместо 5 500 ₽. Билеты только онлайн, количество ограничено." />
+    <title>Dream Riders · Специальный день 1 августа в Парке Сказка</title>
+    <meta name="description" content="Только 1 августа: весь Парк Сказка по специальной цене 2 900 ₽ вместо 5 500 ₽. Более 55 локаций и 7 тематических парков. Билеты только онлайн, количество ограничено." />
     <link rel="canonical" href="https://nessbleesn.github.io/dream-riders/" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Dream Riders · Открытие 1 августа" />
-    <meta property="og:description" content="Новая экстрим-зона, премьера Бумеранга и весь Парк Сказка за 2 900 ₽" />
+    <meta property="og:title" content="Dream Riders · Специальный день 1 августа" />
+    <meta property="og:description" content="Только 1 августа: более 55 локаций и 7 тематических парков за 2 900 ₽ вместо 5 500 ₽." />
     <meta property="og:image" content="https://nessbleesn.github.io/dream-riders/assets/og-dream-riders.jpg" />
     <meta property="og:url" content="https://nessbleesn.github.io/dream-riders/" />
     <meta property="og:locale" content="ru_RU" />
     <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Что такое Dream Riders?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Dream Riders — новая экстрим-зона Парка Сказка. 1 августа специальный билет открывает доступ более чем к 55 локациям и 7 тематическим паркам, включая новую экстрим-зону."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Какие аттракционы входят в билет?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Билет открывает доступ к работающим в этот день локациям Парка Сказка — более 55 локациям и 7 тематическим паркам, включая новую экстрим-зону Dream Riders. Состав работающих аттракционов определяется программой парка и требованиями безопасности."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Сколько стоит билет и где его купить?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Специальная цена на 1 августа — 2 900 ₽ вместо 5 500 ₽. Билеты продаются только онлайн, количество ограничено."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Что делать с электронным билетом после оплаты?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Сохраните электронный билет или QR-код после покупки и предъявите его на входе в парк. Лучше открыть билет заранее или сохранить его на телефон."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Есть ли возрастные и ростовые ограничения?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "У аттракционов действуют индивидуальные возрастные, ростовые и медицинские ограничения. Перед катанием проверьте правила на входе и следуйте указаниям сотрудников парка."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Что будет, если испортится погода?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Работа отдельных аттракционов зависит от погодных условий и требований безопасности. Актуальный статус смотрите на сайте Парка Сказка."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Где проходит Dream Riders?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Dream Riders проходит в Парке Сказка по адресу: Москва, ул. Крылатская, 18."
+            }
+          }
+        ]
+      }
+    </script>
     <link rel="icon" href="assets/favicon-dr.svg" type="image/svg+xml" />
     <link rel="preload" href="assets/fonts/bebas-neue-pro-bold.otf" as="font" type="font/otf" crossorigin />
     <link rel="stylesheet" href="design-system.css" />
-    <link rel="stylesheet" href="styles.css?v=20260723-25" />
+    <link rel="stylesheet" href="styles.css?v=20260723-26" />
   </head>
   <body>
     <canvas class="kinetic-bg" data-kinetic-bg aria-hidden="true"></canvas>
@@ -28,7 +92,7 @@
       </a>
       <a class="event-brand" href="#top" aria-label="Дрим Райдерс, к началу страницы">
         <strong>Дрим Райдерс</strong>
-        <span>Новая экстрим-зона</span>
+        <span>Экстрим-зона Парка Сказка</span>
       </a>
       <nav class="topbar-actions" aria-label="Основные ссылки">
         <a class="topbar-phone" href="tel:+74951336556">
@@ -44,10 +108,8 @@
     <aside class="ticketbar" data-ticketbar aria-label="Быстрая покупка билета">
       <div class="ticketbar-inner section-shell">
         <div class="ticketbar-date">
-          <label for="ticket-date">Дата катания</label>
-          <select class="ticketbar-select" id="ticket-date" data-ticket-date aria-describedby="ticketbar-status">
-            <option value="2026-08-01">1 августа 2026</option>
-          </select>
+          <span class="ticketbar-date-label">Дата катания</span>
+          <time class="ticketbar-date-value" data-ticket-date datetime="2026-08-01">1 августа 2026</time>
         </div>
         <div class="ticketbar-price" aria-live="polite">
           <strong data-ticketbar-price>2 900 ₽</strong>
@@ -55,7 +117,7 @@
         <p class="ticketbar-status" id="ticketbar-status" data-ticketbar-status aria-live="polite">
           <span aria-hidden="true"></span>Продажа открыта
         </p>
-        <a class="button button-small button-primary ticketbar-cta" data-ticketbar-cta href="https://price.parkskazka.com/" target="_blank" rel="noopener noreferrer">Купить билет</a>
+        <a class="button button-small button-primary ticketbar-cta" data-ticketbar-cta href="https://pay.parkskazka.com/goods/13166586" target="_blank" rel="noopener noreferrer">Купить билет</a>
       </div>
     </aside>
 
@@ -71,9 +133,9 @@
             <span aria-hidden="true">Riders</span>
           </h1>
           <p class="hero-subtitle hero-load hero-load-2">Дрим Райдерс</p>
-          <p class="hero-tagline hero-load hero-load-3">Открытие новой экстрим-зоны — ваш день на максимуме</p>
+          <p class="hero-tagline hero-load hero-load-3">Экстрим-зона Dream Riders — ваш день на максимуме</p>
           <div class="hero-cta-group hero-load hero-load-4">
-            <a class="button button-primary" data-ticket-link href="https://price.parkskazka.com/" target="_blank" rel="noopener noreferrer">Купить билет</a>
+            <a class="button button-primary" data-ticket-link href="https://pay.parkskazka.com/goods/13166586" target="_blank" rel="noopener noreferrer">Купить билет</a>
             <p>Только онлайн · количество ограничено</p>
           </div>
         </div>
@@ -83,8 +145,8 @@
 
       <section class="ticker" aria-label="Главное о событии">
         <div class="ticker-track">
-          <span>1 августа</span><i>✦</i><span>Новая экстрим-зона</span><i>✦</i><span>Весь парк</span><i>✦</i><span>2 900 ₽</span><i>✦</i>
-          <span aria-hidden="true">1 августа</span><i aria-hidden="true">✦</i><span aria-hidden="true">Новая экстрим-зона</span><i aria-hidden="true">✦</i><span aria-hidden="true">Весь парк</span><i aria-hidden="true">✦</i><span aria-hidden="true">2 900 ₽</span><i aria-hidden="true">✦</i>
+          <span>1 августа</span><i>✦</i><span>Dream Riders</span><i>✦</i><span>Весь парк</span><i>✦</i><span>2 900 ₽</span><i>✦</i>
+          <span aria-hidden="true">1 августа</span><i aria-hidden="true">✦</i><span aria-hidden="true">Dream Riders</span><i aria-hidden="true">✦</i><span aria-hidden="true">Весь парк</span><i aria-hidden="true">✦</i><span aria-hidden="true">2 900 ₽</span><i aria-hidden="true">✦</i>
         </div>
       </section>
 
@@ -117,7 +179,7 @@
           </div>
           <div class="sales-meter-footer">
             <p><b>Билеты продаются только онлайн</b></p>
-            <a class="button button-primary" data-ticket-link href="https://price.parkskazka.com/" target="_blank" rel="noopener noreferrer">Купить билет</a>
+            <a class="button button-primary" data-ticket-link href="https://pay.parkskazka.com/goods/13166586" target="_blank" rel="noopener noreferrer">Купить билет</a>
           </div>
         </div>
       </section>
@@ -139,7 +201,7 @@
             </div>
             <div class="ticket-meta">
               <div class="ticket-date"><span>Дата события</span><strong data-event-date>01·08·2026</strong></div>
-              <div class="ticket-access"><span>Доступ по билету</span><strong>Весь парк</strong></div>
+              <div class="ticket-access"><span>Доступ по билету</span><strong>Более 55 локаций,<br />7 тематических парков</strong></div>
             </div>
           </div>
           <div class="ticket-stub">
@@ -147,9 +209,8 @@
             <div class="ticket-price"><span>Цена только онлайн</span><strong data-ticket-price>2 900 ₽</strong></div>
             <div class="ticket-value">
               <p><span>Обычная цена</span><s data-regular-price>5 500 ₽</s></p>
-              <p><span>Ваша выгода</span><b data-savings>2 600 ₽</b></p>
             </div>
-            <a class="button button-primary" data-ticket-link href="https://price.parkskazka.com/" target="_blank" rel="noopener noreferrer">Купить билет</a>
+            <a class="button button-primary" data-ticket-link href="https://pay.parkskazka.com/goods/13166586" target="_blank" rel="noopener noreferrer">Купить билет</a>
             <small>1 августа · количество ограничено</small>
           </div>
         </article>
@@ -162,7 +223,7 @@
         <div class="boomerang-copy reveal">
           <p class="section-label">Новый аттракцион</p>
           <h2 id="boomerang-title">Бумеранг</h2>
-          <p class="boomerang-lead">Разгон до 85,3 км/ч, подъём на 37 метров и полный оборот на 360°</p>
+          <p class="boomerang-lead">Разгон до 85,3 км/ч, подъём на 37 метров и полный оборот на 360°. Следите за новостями Парка Сказка.</p>
           <dl class="ride-stats">
             <div><dt><span class="stat-value" data-count="360" data-decimals="0">360</span>°</dt><dd>мёртвая петля</dd></div>
             <div><dt><span class="stat-value" data-count="37" data-decimals="0">37</span> м</dt><dd>высота подъёма</dd></div>
@@ -173,8 +234,8 @@
 
       <section class="experience section-shell" aria-labelledby="experience-title">
         <div class="experience-heading reveal">
-          <p class="section-label">Экстрим-зона</p>
-          <h2 id="experience-title">Три аттракциона<br />Один день</h2>
+          <p class="section-label">Экстрим-зона Dream Riders</p>
+          <h2 id="experience-title">Начните с экстрима<br />Продолжайте в парке</h2>
         </div>
 
         <div class="ride-slider reveal" data-ride-slider tabindex="0" aria-label="Фотографии аттракционов Dream Riders" aria-roledescription="карусель">
@@ -238,13 +299,38 @@
 
       <section class="faq section-shell" aria-labelledby="faq-title">
         <div class="faq-heading reveal">
-          <p class="section-label">Коротко о главном</p>
+          <p class="section-label">Перед поездкой</p>
           <h2 id="faq-title">FAQ</h2>
         </div>
         <div class="faq-list reveal">
-          <details><summary>Что входит в билет</summary><p>Дневные катания в Парке Сказка, доступ ко всему парку и новой экстрим-зоне Dream Riders</p></details>
-          <details><summary>Когда действует специальная цена</summary><p>Только 1 августа 2026 года, в день открытия новой экстрим-зоны</p></details>
-          <details><summary>Где купить билет</summary><p>Эксклюзивно онлайн на сайте. Количество билетов ограничено</p></details>
+          <details>
+            <summary>Что такое Dream Riders?</summary>
+            <p>Dream Riders — новая экстрим-зона Парка Сказка. 1 августа специальный билет открывает доступ более чем к 55 локациям и 7 тематическим паркам, включая новую экстрим-зону.</p>
+          </details>
+          <details>
+            <summary>Какие аттракционы входят в билет?</summary>
+            <p>Билет открывает доступ к работающим в этот день локациям Парка Сказка — более 55 локациям и 7 тематическим паркам, включая новую экстрим-зону Dream Riders. Состав работающих аттракционов определяется программой парка и требованиями безопасности.</p>
+          </details>
+          <details>
+            <summary>Сколько стоит билет и где его купить?</summary>
+            <p>Специальная цена на 1 августа — 2 900 ₽ вместо 5 500 ₽. Билеты продаются только онлайн, количество ограничено.</p>
+          </details>
+          <details>
+            <summary>Что делать с электронным билетом после оплаты?</summary>
+            <p>Сохраните электронный билет или QR-код после покупки и предъявите его на входе в парк. Лучше открыть билет заранее или сохранить его на телефон.</p>
+          </details>
+          <details>
+            <summary>Есть ли возрастные и ростовые ограничения?</summary>
+            <p>У аттракционов действуют индивидуальные возрастные, ростовые и медицинские ограничения. Перед катанием проверьте правила на входе и следуйте указаниям сотрудников парка.</p>
+          </details>
+          <details>
+            <summary>Что будет, если испортится погода?</summary>
+            <p>Работа отдельных аттракционов зависит от погодных условий и требований безопасности. Актуальный статус смотрите на <a href="https://parkskazka.com/entertainment-traffic-light/" target="_blank" rel="noopener noreferrer">сайте Парка Сказка</a>.</p>
+          </details>
+          <details>
+            <summary>Где проходит Dream Riders?</summary>
+            <p>Dream Riders проходит в Парке Сказка по адресу: <a href="https://yandex.ru/maps/?text=Москва%2C%20ул.%20Крылатская%2C%2018" target="_blank" rel="noopener noreferrer">Москва, ул. Крылатская, 18</a>.</p>
+          </details>
         </div>
       </section>
 
@@ -289,6 +375,6 @@
       </div>
     </section>
 
-    <script type="module" src="script.js?v=20260723-25"></script>
+    <script type="module" src="script.js?v=20260723-26"></script>
   </body>
 </html>
