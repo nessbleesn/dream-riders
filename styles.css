@@ -670,6 +670,10 @@ h3,
   line-height: 0.98;
 }
 
+.experience-heading h2 {
+  font-size: clamp(3.5rem, 6.6vw, 6rem);
+}
+
 .section-intro > p:last-child {
   margin: 0;
   color: var(--muted);
@@ -1776,6 +1780,10 @@ html[data-cookie-consent-open="true"] .cookie-consent {
   .experience-heading h2,
   .tickets-heading h2 {
     font-size: clamp(4rem, 17vw, 6rem);
+  }
+
+  .experience-heading h2 {
+    font-size: clamp(3rem, 14vw, 4.8rem);
   }
 
   .location-strip {
